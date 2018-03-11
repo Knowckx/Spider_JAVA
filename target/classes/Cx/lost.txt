@@ -1,0 +1,11 @@
+        //步骤   
+        // conn.data("page","2");    //代参数get
+        //也可以header, data, cookie等
+        // Document doc1 = conn.timeout(4000).userAgent("Mozilla").get();  
+        // System.out.println(doc); 
+
+
+                //解析HTML字符串
+        String html = "<html><head><title>First parse</title></head>"
+                + "<body><p>Parsed HTML into a doc.</p></body></html>";
+        Document doc = Jsoup.parse(html);
