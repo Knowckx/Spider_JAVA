@@ -14,7 +14,8 @@ Document doc = Jsoup.parse(html);
 //专门有一个Connection.Request可以用来重复定义Req
 
 //cookies
-Set-Cookie:JSESSIONID=CF1CC5BF8B872B03CFEB4AE60F8E24EA; Path=/zsjypt
+//用获取到的cookie访问页面  
+Jsoup.connect("url").cookies(cookies).get();  
 
 //joup没有cookies管理机制
 

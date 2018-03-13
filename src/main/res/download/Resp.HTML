@@ -1,0 +1,1610 @@
+
+
+
+
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title> 长兴市民学习在线</title>
+		<!--格式化样式第一个加载-->
+		<link rel="stylesheet" href="wlkt/style/public/reset.css" />
+		<!--公共样式-->
+		<link rel="stylesheet" href="wlkt/style/public/public.css" />
+		
+		
+		
+		<!--常用预置样式最后加载-->
+		<link rel="stylesheet" href="wlkt/style/public/global.css" />
+		<!--系统管理样式-->
+		<link rel="stylesheet" href="wlkt/style/public/system.css" />
+		<link rel="stylesheet" href="sqwz/tts/css/training_system.css"/>
+		<link rel="stylesheet" href="wlkt/style/public/tipswindown.css" />
+
+	
+
+<style>
+.text-overflow{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.picfocus .pic li{width: 100%;}
+.p-dl-text{padding: 10px;}
+.pic-kcfm {
+	display: inline;
+	float: left;
+	height: 100px;
+	margin-right: 6px;
+	padding: 2px;
+	border: 1px solid #ccc;
+}
+.vod-con div{margin:10px auto}
+
+.kcjj-xxxx {
+	display: block;
+	height: 100px;
+	overflow: hidden;
+	padding-left: 0;
+	font-size: 12px !important;
+}
+
+.kcjj-xxxx span,.kcjj-xxxx p,.kcjj-xxxx font {
+	font-size: 12px !important;
+}
+
+.kcjs-ckxx {
+	display: inline-block;
+	width: 84px;
+	height: 19px;
+	line-height: 19px;
+	font-weight: bold;
+	text-align: center;
+	color: #fff !important;
+	background: url(skin_02/kcjs-ckxx.gif);
+}
+
+.mod-kctz {
+	padding-bottom: 5px;
+}
+.xxzynum {
+	text-align: center;
+	margin-top: -20px;
+}
+
+.xxzywatch_num {
+	background: url(style-zsjy/style/images/ico_22.gif) left center
+		no-repeat;
+	padding: 0 15px;
+	color: #8c8c8c
+}
+
+.xxzypl_num {
+	background: url(style-zsjy/style/images/ico_pl.gif) left center
+		no-repeat;
+	padding-left: 15px;
+	cursor: pointer;
+	color: #8c8c8c;
+}
+.mod-list-pic{
+	height:100%;
+}
+.kt-con .sqjy{height:290px;overflow: hidden;}
+.othernav{z-index:9999}
+.othernav ul{z-index:10000}
+</style>
+
+
+
+<script src="style-common/js/jquery-1.11.0.min.js"></script>
+<script language="JavaScript" src="javascript/code.js"></script>
+<script src="style-common/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/flexpaper_flash.js"></script>
+<script type="text/javascript" src="wlkt/js/tipswindown.js"></script>
+<!--滚动脚本 float:right;margin:5px 10px 5px 0;--> 
+<script src="wlkt/js/MSClass.js"></script>
+<script src="oou/jy/js/jquery-migrate-1.2.1.js"></script>
+<script language="JavaScript" src="javascript/jquery/jquery.hoverdelay.js"></script>
+
+
+
+
+
+<script type="text/javascript">
+		var bs = '2';
+		var fg = '56';
+		var bslj = '';
+		var fglj = '';
+		if(bs!='' &&  bs!=null){
+			bslj = 'wlkt/style/frame/frame1_2_1.css';
+		}else{
+			bslj = 'wlkt/style/frame/frame1_2_1.css';
+		}
+		if(fg!='' &&  fg!=null){
+			fglj = 'wlkt/style/skin_56.css';
+		}else{
+			fglj = 'wlkt/style/skin_11.css';
+		}
+		//引用框架样式
+		document.write("<link href='"+bslj+"' rel='stylesheet' id='curFrame'/>");
+		//引用皮肤样式
+		document.write("<link href='"+fglj+"' rel='stylesheet' id='curSkin'/>");
+</script>
+<script type="text/javascript">
+		jQuery = $;
+		
+		jQuery().ready(function(){
+				var yhms = jQuery("#yhm").val();
+				var sign = jQuery("#zdysign").val();
+				jQuery("#_yzm").click();
+				//alert(sign);
+				var fg = '56';
+				if(yhms!=null && yhms!=""){
+					var types = jQuery("#type").val(); 
+					if(types=='kczb'){
+						document.getElementById("zbkc").click();
+					}
+					if(sign=='zdysign3'){
+						jQuery("#tab03").click();
+					}
+					if(sign=='zdysign2'){
+						jQuery("#tab02").click();
+					}
+					if(sign=='zdysign1'){
+						jQuery("#tab01").click();
+					}
+					if(sign=='zdysign0'){
+						jQuery("#tab00").click();
+					}
+					if(fg=='19'|| fg=='52'|| fg=='53'|| fg=='54'|| fg=='55'|| fg=='56'|| fg=='57'|| fg=='58'|| fg=='59'){
+						jQuery("#sd").css("display","block");
+					}else{
+						jQuery("#sd").css("display","none");
+					}
+					var actime = '';
+				       if(actime!=null&&actime!=''){
+				           var url= "/zsjypt/loginService.action?project=IgLuU23AfnQ=&key=M1FZkjr5Bb2GYWv0efN6XE4GpZ8PqgCC&actime="+actime;
+					       jQuery.get(url,function(data){
+							},"html");
+				       }
+				}
+				else{
+					document.getElementById("_yzm").click();
+					var message = jQuery("#message").val();
+					if (message=='dlcw'){
+						alert("提示：用户名或密码错误，请重新输入！");
+						return false;
+					}
+					if (message=='yzmcw'){
+						alert("提示：输入验证码错误，请重新输入！");
+						return false;
+					}
+					if (message=='yzmcs'){
+						alert('提示：获取验证码超时，请重新登录！');	
+						$("#_yzm").trigger("click");
+						return false;
+					}
+					if(message=='cardexist'){
+						alert("提示：卡号已绑定，请用用户名登录！");
+						return false;
+					}
+					if(message=='cardlogin'){
+						alert("提示：登录成功，请完善信息！");
+				    	  cardRegister();
+				    	  return false;
+				     }
+				}
+			});
+		//去除前后的空格
+			function trim(str){
+				if(str==null || str.length==0) return "";
+				var i=0,j=str.length-1,c;
+				for(;i<str.length;i++){
+					c=str.charAt(i);
+					if(c!=' ') break;
+				}
+				for(;j>-1;j--){
+					c=str.charAt(j);
+					if(c!=' ') break;
+				}
+				if(i>j) return "";
+					return str.substring(i,j+1);
+			}
+			function fb(sfkf){
+				var url = 'sqwzSfkf.action';
+				var sqwzb_id = jQuery("#sqwzb_id").val();
+				jQuery.post(url,{"SqwzModel.sfkf":sfkf,"SqwzModel.sqwz_id":sqwzb_id},function(response){
+					if(response=="success"){
+						if(sfkf==0){
+							jQuery("#yfb").css("display","block");
+							jQuery("#wfb").css("display","none");
+						}
+						if(sfkf==1){
+							jQuery("#yfb").css("display","none");
+							jQuery("#wfb").css("display","block");
+						}
+						return false;
+					}else{
+						return false;
+					}
+				})
+			}
+			function Exit(){
+				var sqwzb_id='121';
+				if(confirm("确认退出吗？")){
+					var curUrl = window.location.href;
+					//code_save('yhExit.action?sign=sqwz&sqwzb_id='+sqwzb_id);
+					var url = 'yhExit.action';
+					jQuery.post(url,{"sign":"sqwz","sqwzb_id":sqwzb_id},function(response){
+						
+						window.location.href = curUrl;
+						
+					});
+				}
+			}
+			function login() {
+				if (jQuery("#yhms").val() == "" || jQuery("#yhms").val()==null) {
+					alert("提示：请输入用户名！");
+					jQuery("#yhms").focus();
+					return false;
+				} else {
+					if (jQuery("#mm").val() == "" || jQuery("#mm").val() == null) {
+						alert("提示：请输入密码！");
+						jQuery("#mm").focus();
+						return false;
+					} else {
+						if (jQuery("#yzm").val() == "" || jQuery("#yzm").val().length != 4) {
+							alert("提示：请检查是否输入验证码或者验证码是否输入不正确！");
+							jQuery("#yzm").select();
+							return false;
+						}
+					}
+				}
+				
+				//code_save('Login.action?sign=jgwz&sqwzb_id=121');
+				return true;
+			}
+			
+			function _(id) {
+				return document.getElementById(id);
+			}
+			function xsmk(){
+				var ct = jQuery("input[name='mkid']");
+				for(var i=0;i<ct.length;i++){
+					var ctid = ct[i].value;
+					jQuery("#gb_m"+ctid).css("display","block");
+				}
+				 mkyd();
+	             bjmkys();
+			}
+			function qxmk(kcwzmkb_id){
+				var check = jQuery("input[name='wzmk']");
+				for(var i=0;i<check.length;i++){
+					if(trim(kcwzmkb_id)==trim(jQuery('#mk_'+i).val())){
+						document.getElementById('mk_'+i).checked=false;
+					}
+				}
+			}
+			//设置固定模块
+			function szgdmk(num){
+				var sqwzb_id=jQuery("#sqwzb_id").val();
+				var check = jQuery("input[name='wzmk']");
+				var obj = "gb_m"+num;
+				var sfxz = false;
+				for(var i=0;i<check.length;i++){
+					if(check[i].value==num){
+						if(check[i].checked==false){
+							document.getElementById(obj).click();
+						}else{
+							var mkxx = '';
+							jQuery.post("sqwzXsmk.action",{"kcwzmkb_id":num,"SqwzModel.sqwz_id":sqwzb_id},function(response){
+								if(response=="error"){
+									alert("提示：操作失败！");
+									return false;
+								}else{
+									mkxx = response; 
+									var o=document.createElement("div");
+									var cdiv = document.getElementById("dom0").childNodes;
+									o.innerHTML=mkxx;
+								    $('dom0').insertBefore(o,cdiv[0]);
+								    o.getElementsByTagName("h3")[0].onmousedown=addevent;
+								    o.getElementsByTagName("h3")[0].style.cursor="move";
+								    o.getElementsByTagName("del")[0].style.display="block";
+								}
+							})
+						}
+					}
+				}
+			}
+			function qxymyssz(){
+				if(confirm("提示：是否放弃当前操作？点击“确定”则退出装扮页面，点击“取消”则停留在本页！")){
+				code_save("jgwzIndex.action");
+					hidDiv('ktSetting');
+					ycmk();
+					return false;
+				}
+			}
+			function ycmk(){
+				var ct = jQuery("input[name='mkid']");
+				for(var i=0;i<ct.length;i++){
+					document.getElementById("gb_m"+ct[i].value).style.display="none";
+				}
+				var o=document.getElementById("ktMain").getElementsByTagName("h3");
+	             for(var i=0;i<o.length;i++){
+		            o[i].onmousedown='';
+		            o[i].style.cursor="";
+	             }
+	             qxmkyd();
+	             qxbjmkys();
+			}
+			function hf(){
+				var sqwzb_id=jQuery("#sqwzb_id").val();
+				if(confirm("提示：确定要恢复吗？点击“确定”恢复到默认样式，装扮信息将会被删除，点击“取消”则停留在本页！")){
+					jQuery.post("sqwzYshf.action",{"SqwzModel.sqwz_id":sqwzb_id},function(response){
+						if(response=='success'){
+							code_save("jgwzIndex.action");
+							hidDiv('ktSetting');
+							ycmk();
+							qxmkyd();
+			            	qxbjmkys();
+						}else{
+							alert("提示：操作失败！");
+						}
+					});
+				}
+			}
+		
+			function save(){
+				var ymbs = "";
+				var ymfg = "";
+				var wzbs = document.getElementsByName("wzymbs");
+				var wzfg = document.getElementsByName("wzfg");
+				for(var i=0;i<wzbs.length;i++){
+					if(wzbs[i].checked==true){
+						ymbs = wzbs[i].value;
+					}
+				}
+				for(var i=0;i<wzfg.length;i++){
+					if(wzfg[i].checked==true){
+						ymfg = wzfg[i].value;
+					}
+				}
+				var mk='';
+				var zdymk = '';
+				var wxzzdymk = '';
+				var check = document.getElementsByName('wzmk');
+				var zdycheck = document.getElementsByName('zdywzmk');
+				for(var i=0;i<check.length;i++){
+					if(check[i].checked){
+			    		if(mk==null || mk==''){
+							mk = trim(document.getElementById('mk_'+i).value);
+						}else{
+							mk = mk+','+trim(document.getElementById('mk_'+i).value);
+						}
+					}
+				}
+				for(var j=0;j<zdycheck.length;j++){
+					if(zdycheck[j].checked){
+				    	if(zdymk==null || zdymk==''){
+				    		//alert(document.getElementById('zdymk_'+j).value);
+							zdymk = trim(document.getElementById('zdymk_'+j).value);
+						}else{
+							zdymk = zdymk+','+trim(document.getElementById('zdymk_'+j).value);
+						}
+					}else{
+						if(wxzzdymk==null || wxzzdymk==''){
+							wxzzdymk = trim(document.getElementById('zdymk_'+j).value);
+						}else{
+							wxzzdymk = wxzzdymk+','+trim(document.getElementById('zdymk_'+j).value);
+						}
+					}
+				}
+				var lzdylmlx = "";
+				var mzdylmlx = "";
+				var rzdylmlx = "";
+				var zdylmlx = "";
+				if(mk=='' || mk==null){
+					alert("提示：请选择显示模块！");
+					return false;
+				}
+				var lmk = "";
+				var mmk = "";
+				var rmk = "";
+				var lxsmc = "";
+				var mxsmc = "";
+				var rxsmc = "";
+				var lmkwz = "";
+				var mmkwz = "";
+				var rmkwz = "";
+				var mkwz="";
+				var mks = ""; 
+				var xsmc = "";
+				var lmks = jQuery("#dom0 div input[name='mkid']");
+				var mmks = jQuery("#dom1 div input[name='mkid'] ");
+				var rmks = jQuery("#dom2 div input[name='mkid'] ");
+				
+				var lmkxsmc = jQuery("#dom0 div input[name='mkxsmc']");
+				var mmkxsmc = jQuery("#dom1 div input[name='mkxsmc'] ");
+				var rmkxsmc = jQuery("#dom2 div input[name='mkxsmc'] ");
+				
+				//左侧
+				jQuery.each(lmks,function(n,obj){
+				//alert("l"+obj.value);
+				   if(lmk==null || lmk==''){
+						lmk = trim(obj.value);
+						lmkwz = trim("0");
+						if(parseInt(trim(obj.value))<31)
+							lzdylmlx = trim("0");
+						else if(jQuery("#psftb_"+trim(obj.value)).val()==1){
+						   lzdylmlx = trim("2");
+						}else{
+						   lzdylmlx = trim("1");
+						}
+							
+					}else{
+						lmk = lmk+','+trim(obj.value);
+						lmkwz = lmkwz+trim(",0");
+						if(parseInt(trim(obj.value))<31)
+							lzdylmlx = lzdylmlx+trim(",0");
+						else if(jQuery("#psftb_"+trim(obj.value)).val()==1){
+							lzdylmlx = lzdylmlx+trim(",2");
+						}else{
+						    lzdylmlx = lzdylmlx+trim(",1");
+						}
+					}
+				});
+				
+				//左侧
+				jQuery.each(lmkxsmc,function(n,obj){
+				//alert("l"+obj.value);
+					if(lxsmc==null || lxsmc==''){
+					　　if(trim(obj.value)==''||trim(obj.value)==null){
+					        mxsmc="　";
+					    }else{
+					      lxsmc = trim(obj.value);
+					    }
+					}else{
+					    if(trim(obj.value)==''||trim(obj.value)==null){
+					        lxsmc =lxsmc+','+"　";
+					    }else{
+					      lxsmc =lxsmc+','+trim(obj.value);
+					    }
+						
+					}
+				});
+				//中间
+				jQuery.each(mmks,function(n,mobj){
+				//alert("m"+mobj.value);
+					if(mmk==null || mmk==''){
+						mmk = trim(mobj.value);
+						mmkwz = trim("1");
+						if(parseInt(trim(mobj.value))<31)
+							mzdylmlx = trim("0");
+						else if(jQuery("#psftb_"+trim(mobj.value)).val()==1){
+						   mzdylmlx = trim("2");
+						}else{
+						   mzdylmlx = trim("1");
+						}
+					}else{
+						mmk = mmk+','+trim(mobj.value);
+						mmkwz = mmkwz+trim(",1");
+						if(parseInt(trim(mobj.value))<31)
+							mzdylmlx = mzdylmlx+trim(",0");
+						else if(jQuery("#psftb_"+trim(mobj.value)).val()==1){
+							mzdylmlx = mzdylmlx+trim(",2");
+						}else{
+						    mzdylmlx = mzdylmlx+trim(",1");
+						}
+					}
+				});
+				
+				//中间
+				jQuery.each(mmkxsmc,function(n,mobj){
+				//alert("m"+mobj.value);
+					if(mxsmc==null || mxsmc==''){
+					　　if(trim(mobj.value)==''||trim(mobj.value)==null){
+					        mxsmc="　";
+					    }else{
+					      mxsmc = trim(mobj.value);
+					    }
+					}else{
+					    if(trim(mobj.value)==''||trim(mobj.value)==null){
+					        mxsmc =mxsmc+','+"　";
+					    }else{
+					      mxsmc =mxsmc+','+trim(mobj.value);
+					    }
+						
+					}
+				});
+				//右侧
+				jQuery.each(rmks,function(n,robj){
+					if(rmk==null || rmk==''){
+						rmk = trim(robj.value);
+						rmkwz = trim("2");
+						if(parseInt(trim(robj.value))<31)
+							rzdylmlx = trim("0");
+						else if(jQuery("#psftb_"+trim(robj.value)).val()==1){
+						   rzdylmlx = trim("2");
+						}else{
+						   rzdylmlx = trim("1");
+						}
+					}else{
+						rmk = rmk+','+trim(robj.value);
+						rmkwz = rmkwz+trim(",2");
+						if(parseInt(trim(robj.value))<31)
+							rzdylmlx = rzdylmlx+trim(",0");
+						else if(jQuery("#psftb_"+trim(robj.value)).val()==1){
+							rzdylmlx = rzdylmlx+trim(",2");
+						}else{
+						    rzdylmlx = rzdylmlx+trim(",1");
+						}
+					}
+				});	
+				
+				//右侧
+				jQuery.each(rmkxsmc,function(n,robj){
+				//alert("r"+robj.value);
+					if(rxsmc==null || rxsmc==''){
+					　　if(trim(robj.value)==''||trim(robj.value)==null){
+					        rxsmc="　";
+					    }else{
+					      rxsmc = trim(robj.value);
+					    }
+					}else{
+					    if(trim(robj.value)==''||trim(robj.value)==null){
+					        rxsmc =rxsmc+','+"　";
+					    }else{
+					      rxsmc =rxsmc+','+trim(robj.value);
+					    }
+					}
+				});	
+				mks = trim(lmk)+","+trim(mmk)+","+trim(rmk);
+				//xsmc = trim(lxsmc)+","+trim(mxsmc)+","+trim(rxsmc);
+				xsmc = lxsmc+","+mxsmc+","+rxsmc;
+				//alert("xsmc"+xsmc);
+				mkwz  = trim(lmkwz)+","+trim(mmkwz)+","+trim(rmkwz);
+				//alert("mkwz"+mkwz);
+				zdylmlx  = trim(lzdylmlx)+","+trim(mzdylmlx)+","+trim(rzdylmlx);
+				var url = 'sqwzYsSave.action';
+				var sqwzb_id = jQuery("#sqwzb_id").val();	
+				//alert(ymfg);
+				if(ymfg=='' || ymfg==null){
+					ymfg = 1;
+				}
+				jQuery.post(url,{"wzymbs":ymbs,"wzfg":ymfg,"SqwzModel.sqwz_id":sqwzb_id,"wzmk":mks,"mkxsmc":xsmc,"SqwzModel.sqwz_id":sqwzb_id,"zdylmlx":zdylmlx,"mkwz":mkwz,"kcwzmkszb_id":zdymk,"wxzzydmkid":wxzzdymk},function(response){
+					if(response=="success"){
+						lmks = "";
+						mmks = "";
+						rmks = "";
+						hidDiv('ktSetting');
+						qxmkyd();
+	             		qxbjmkys();
+	             		ycmk();
+	             		code_save("jgwzIndex.action");
+					}else{
+						alert("提示：保存失败！");
+						return false;
+					}
+				});
+			}
+			function delzdymk(sqwzwzmkszb_id){
+				var url = "sqwzDelZdymk.action";
+				if(confirm("提示：确定要删除此模块吗？删除后不可恢复！")){
+					jQuery.post(url,{"sqwzwzmkszb_id":sqwzwzmkszb_id},function(response){
+						if(response=="error"){
+							alert("提示：操作失败！");
+							return false;
+						}else{
+						    jQuery("#zdy"+sqwzwzmkszb_id).remove();
+							jQuery("#m"+sqwzwzmkszb_id).remove();
+							code_save("jgwzIndex.action");
+						}
+					});
+				}
+			}
+			function addmk(){
+						jQuery.tipsWindow({
+							___title:"添加模块",
+							___content:"iframe:sqwzZdymk.action?SqwzModel.sqwz_id="+jQuery("#sqwzb_id").val(),
+							___width:"600",
+							___height:"500",
+							___drag:"", //___boxTitle
+							___showbg:true,
+							___closeID:"c2"
+	
+						});
+				}
+				function xgzdynr(sqwzwzmkszb_id,zdylmlx,sign,bs,zdylj){
+				if(zdylj==1){
+				  jQuery.tipsWindow({
+					___title:"自定义链接设置",
+					___content:"iframe:sqwzmkZdyxg.action?sqwzwzmkszb_id="+sqwzwzmkszb_id&+"&zdylmlx="+zdylmlx,
+					___width:"400",
+					___height:"350",
+					___drag:"",//___boxTitle
+					___showbg:true,
+					___closeID:"c2"
+				});
+				}else{
+				  var sqwzb_id = jQuery("#sqwzb_id").val();
+				  jQuery.tipsWindow({
+					___title:"修改模块内容",
+					___content:"iframe:sqwzXgzdynr.action?sqwzwzmkszb_id="+sqwzwzmkszb_id+"&zdylmlx="+zdylmlx+"&sign="+sign+"&bs="+bs+"&SqwzModel.sqwz_id="+sqwzb_id,
+					___width:"600",
+					___height:"500",
+					___drag:"",//___boxTitle
+					___showbg:true,
+					___closeID:"c2"
+				  });
+				}
+			}
+			function uploadbj(){
+				var sqwzb_id = jQuery("#sqwzb_id").val();
+				jQuery.tipsWindow({
+					___title:"上传背景图",
+					___content:"iframe:sqwzUploadBj.action?SqwzModel.sqwz_id="+sqwzb_id,
+					___width:"550",
+					___height:"170",
+					___drag:"",//___boxTitle
+					___showbg:true,
+					___closeID:"c2"
+				});
+			}
+			
+			function uploadtbtp(){
+				var sqwzb_id = jQuery("#sqwzb_id").val();
+				jQuery.tipsWindow({
+					___title:"上传头部图",
+					___content:"iframe:sqwzUploadTbtp.action?SqwzModel.sqwz_id="+sqwzb_id,
+					___width:"600",
+					___height:"240",
+					___drag:"",//___boxTitle
+					___showbg:true,
+					___closeID:"c2"
+				});
+			}
+			
+			
+			function zdymkxs(num){
+				var check = jQuery("input[name='zdywzmk']");
+				var obj = "gb_m"+num;
+				var sfxz = false;
+				for(var i=0;i<check.length;i++){
+					if(check[i].value==num){
+						if(check[i].checked==false){
+							document.getElementById(obj).click();
+						}else{
+							var mkxx = '';
+							jQuery.post("sqwzXszdymk.action",{"sqwzwzmkszb_id":num},function(response){
+								if(response=="error"){
+									alert("提示：操作失败！");
+									return false;
+								}else{
+									mkxx = response; 
+									var o=document.createElement("div");
+									var cdiv = document.getElementById("dom0").childNodes;
+									o.innerHTML=mkxx;
+								    $('dom0').insertBefore(o,cdiv[0]);
+								    o.getElementsByTagName("h3")[0].onmousedown=addevent;
+								    o.getElementsByTagName("h3")[0].style.cursor="move";
+								    o.getElementsByTagName("del")[0].style.display="block";
+								}
+							})
+						}
+					}
+				}
+			}
+			
+			function qxzdymk(sqwzwzmkszb_id){
+				var check = document.getElementsByName('zdywzmk');
+				for(var i=0;i<check.length;i++){
+					if(trim(sqwzwzmkszb_id)==trim(document.getElementById('zdymk_'+i).value)){
+						document.getElementById('zdymk_'+i).checked=false;
+					}
+				}
+			}
+			function jbgkck(sqwzgkb_id){
+				var url = 'jgwzFrame.action?sqwzgkb_id='+sqwzgkb_id+"&sqwzlmb_id=2";
+				code_save(url);
+			}
+			function wzly(){
+			    var sqwzb_id = jQuery("#sqwzb_id").val();
+				var url = 'jgwzFrame.action?sqwzlmb_id=6&SqwzModel.sqwz_id='+sqwzb_id;
+				window.location=url;
+				//code_save(url);
+			}
+			function yqljmore(sqwzwzmkszb_id){
+				//code_save("jgwzYqljMore.action?sign=yqljmore");
+				var sqwzb_id = jQuery("#sqwzb_id").val();
+				var url = 'jgwzYqljMore.action?sign=yqljmore&SqwzModel.sqwz_id='+sqwzb_id+"&sqwzwzmkszb_id="+sqwzwzmkszb_id;
+				window.location=url;
+			}
+			function gzdtmore(){
+				var sqwzb_id = jQuery("#sqwzb_id").val();
+				var url = 'jgwzFrame.action?sqwzlmb_id=3&sqwzgzdtb_id=0&SqwzModel.sqwz_id='+sqwzb_id;
+				window.location=url;
+			}
+			function gzdtck(sqwzgzdtb_id,sqwzlmszb_id,fid){
+				var url = 'jgwzgzdtck.action?sqwzgzdtb_id='+sqwzgzdtb_id+"&sqwzlmb_id=3&sign=gzdtck&sqwzlmszb_id="+sqwzlmszb_id+"&fid="+fid;
+				code_save(url);
+			}
+			function xwmore(){
+				//var url = 'jgwzFrame.action?sqwzlmb_id=4';
+				var sqwzb_id = jQuery("#sqwzb_id").val();
+				var url = 'jgwzFrame.action?sqwzlmb_id=4&SqwzModel.sqwz_id='+sqwzb_id;
+				window.location=url;
+				//code_save(url);
+			}
+			function xwck(sqwzxwb_id,sqwzlmszb_id,fid){
+				var url = 'jgwzXwck.action?sqwzxwb_id='+sqwzxwb_id+"&sqwzlmb_id=4&sign=xwck&sqwzlmszb_id="+sqwzlmszb_id+"&fid="+fid;
+				code_save(url);
+			}
+			function xwdtck(wzxwb_id,sqwzlmszb_id,fid){
+				code_save("jgwzXwzxnr.action?xwglModel.wzxwb_id="+wzxwb_id+"&sqwzlmb_id=8&sign=xwzxnrck&sqwzlmszb_id="+sqwzlmszb_id+"&fid="+fid);
+			}
+			function tzmore(){
+				//var url = 'jgwzFrame.action?sqwzlmb_id=5';
+				//code_save(url);
+				var sqwzb_id = jQuery("#sqwzb_id").val();
+				var url = 'jgwzFrame.action?sqwzlmb_id=5&SqwzModel.sqwz_id='+sqwzb_id;
+				window.location=url;
+			}
+			function tzck(sqwztzggb_id,sqwzlmszb_id,fid){
+				var url = 'jgwzTzggck.action?sqwztzggb_id='+sqwztzggb_id+"&sqwzlmb_id=5&sign=tzggck&sqwzlmszb_id="+sqwzlmszb_id+"&fid="+fid;
+				code_save(url);
+			}
+			function xcpmore(sqwzwzmkszb_id){
+				//code_save("jgwzXcpMore.action?sign=xcpmore");
+				var sqwzb_id = jQuery("#sqwzb_id").val();
+				var url = 'jgwzXcpMore.action?sign=xcpmore&SqwzModel.sqwz_id='+sqwzb_id+"&sqwzwzmkszb_id="+sqwzwzmkszb_id;
+				window.location=url;
+			}
+			function xcpck(sqwzdmtxxb_id){
+				code_save("jgwzXwcknr.action?sqwzdmtxxb_id="+sqwzdmtxxb_id+"&sign=xcpck");
+			}
+			function zdymkckwb(sqwzmknrb_id){
+				code_save("jgwzZdymkckwb.action?sqwzmknrb_id="+sqwzmknrb_id);
+			}
+			//资源中心资源类别查看
+			function zdymkckzyzx(sqwzwzmkszb_id,sqwzmknrb_id,nrlx){
+				//alert("*********"+sqwzwzmkszb_id.substring(0,2));
+				//code_save("zl_qryZylb.action?zlflbid="+sqwzwzmkszb_id);
+				var sqwzlmszb_id = '843';
+				code_save("jgwzFrame.action?sqwzlmb_id=9&sqwzlmszb_id="+sqwzlmszb_id+"&fid=0");
+			     
+			}
+			
+			//自定义模块列表查看
+			function zdymkcklb(sqwzwzmkszb_id,sqwzmknrb_id,nrlx){
+				
+				if( sqwzwzmkszb_id==6806 || sqwzwzmkszb_id=='6806' ){
+					window.location.href = 'jgwzFrame.action?SqwzModel.sqwz_id=156&sqwzlmb_id=10&sqwzlmszb_id=1036&fid=0';
+					return;
+				}
+				
+			   if(nrlx=='tlbmore'){
+			     code_save("jgwzZdymkcklb.action?sqwzwzmkszb_id="+sqwzwzmkszb_id+"&sign=tlbmore&bz=tlbmore");
+			   }else if(nrlx=='lbmore'){
+				 code_save("jgwzZdymkcklb.action?sqwzwzmkszb_id="+sqwzwzmkszb_id+"&sign=lbmore&bz=lbmore"); 
+			   }else{
+				   var bz = "";
+				   if(nrlx==5){
+					   bz="tlbmore";
+				   }else{
+					   bz="lbmore";
+				   }
+			      code_save("jgwzZdymkcklb.action?sqwzwzmkszb_id="+sqwzwzmkszb_id+"&sqwzmknrb_id="+sqwzmknrb_id+"&bz="+bz);
+			   }
+			}
+			
+			function wzjsck(){
+				var url = "jgwzjbgkckmx.action?sqwzlmb_id=2";
+				code_save(url);
+				//var sqwzb_id = jQuery("#sqwzb_id").val();
+				//var url = 'jgwzjbgkckmx.action?SqwzModel.sqwz_id='+sqwzb_id;
+				//window.location=url;
+			}
+			function bjtsave(){
+				var sqwzb_id = jQuery("#sqwzb_id").val();
+				var url = "sqwzUploadBjSave.action";
+				jQuery.post(url,{"SqwzModel.sqwz_id":sqwzb_id},function(response){
+						if(response=="error"){
+							alert("提示：操作失败！");
+							return false;
+						}else{
+							code_save("jgwzIndex.action");
+						}
+					});
+				}		
+			function tbtpsave(){
+				var sqwzb_id = jQuery("#sqwzb_id").val();
+				var url = "sqwzUploadTbtpSave.action";
+				jQuery.post(url,{"SqwzModel.sqwz_id":sqwzb_id},function(response){
+					if(response=="error"){
+						alert("提示：操作失败！");
+						return false;
+					}else{
+						code_save("jgwzIndex.action");
+					}
+				});
+			}	
+			function jsck(ljdz){
+	            if(ljdz.substring(0,7)=="http://"){
+	                window.open(ljdz);
+	            }else{
+	                window.open("http://"+ljdz);
+	            }   
+			}
+			function xwdtmore(){
+				//var url = 'jgwzFrame.action?sqwzlmb_id=4';
+				var sqwzb_id = jQuery("#sqwzb_id").val();
+				var url = 'jgwzFrame.action?sqwzlmb_id=8&SqwzModel.sqwz_id='+sqwzb_id;
+				window.location=url;
+				//code_save(url);
+			}	
+			//资源中心more
+			function zyzxmore(){
+				var sqwzb_id = jQuery("#sqwzb_id").val();
+				var url = 'jgwzFrame.action?sqwzlmb_id=9&SqwzModel.sqwz_id='+sqwzb_id;
+				window.location=url;
+			}
+			function wjmm(){
+				var sqwzb_id =  jQuery("#sqwzb_id").val();
+				window.location = 'index_resetmm.action?sign=jgwz&sqwzb_id='+sqwzb_id;
+			}
+			function wjyhm(){
+				var sqwzb_id =  jQuery("#sqwzb_id").val();
+				window.location = 'index_FindUserLoginName.action?sign=jgwz&sqwzb_id='+sqwzb_id;
+			}
+			function showVideo(zlid){
+				var sqwzb_id =  jQuery("#sqwzb_id").val();
+				window.open("jgwzRefzyPlay.action?zlid="+zlid+"&sqwzModel.sqwz_id="+sqwzb_id);
+			}
+			function cardRegister(){
+				var yhm = '';
+		    	var mm = '';
+				$.tipsWindow({
+					___title: "",	//窗口标题文字
+					___content: "iframe:index_Login.action?bz=card&cardModel.card_num="+yhm+"&cardModel.card_pwd="+mm+'&sign=jgwz'+"&sqwzModel.sqwz_id="+jQuery("#sqwzb_id").val(),	//内容(可选内容为){ text | id | img | url | iframe }
+					___width: "620",			//窗口宽度
+					___height: "420",				//窗口离度
+					___titleClass: "boxTitle",	//窗口标题样式名称
+					___closeID:"",				//关闭窗口ID
+					___time:"",					//自动关闭等待时间
+					___drag:"___box",					//拖动手柄ID
+					___showbg:true,			//是否显示遮罩层
+					___fns:function(){}			//关闭窗口后执行的函数
+				});
+				
+			}
+		</script>
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+  </head>
+  
+  <body>
+  
+ <form id="jgwzIndex" name="jgwzIndex" action="/zsjypt/jgwzIndex.action" method="POST">
+ <input type="hidden" id="yhm" value=""/>
+  <input type="hidden" name="zdysign" id="zdysign" value=""/>
+ <input type="hidden"  id="message" value="yzmcw"/>
+ <input type="hidden"  id="type" value="" name="type"/>
+ <input id="sqwzb_id" name="SqwzModel.sqwz_id" type="hidden" value="121"/>
+  <!--顶部信息栏-->
+ 
+ 
+<!--课程内容  -->
+<div id="wrapper" class="kt-wrapper" > 
+  <!--头部信息-->
+  
+ 
+  
+  <div id="ktHeader" class="header">
+  
+   
+	   
+	  	<div  style="height:180px">
+	    <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+	     codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" style="float:left;" 
+	   width="950" height=180>
+		 <param name="SRC" value="/fileup/wlkt/sqwz/sqwzbjt/121/2013112101511385013096111.swf" />
+		 <embed src="/fileup/wlkt/sqwz/sqwzbjt/121/2013112101511385013096111.swf" 
+		 quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" 
+		 type="application/x-shockwave-flash" width="950" height=180>
+		 <param name='wmode' value='transparent' />
+	  </object>
+	  </div>
+	   
+   
+   
+ 
+ 	
+  </div>
+  
+  <!--主导航-->
+  <div id="ktNav" class="kt-nav">
+    <div class="nav">
+      <ul>
+        
+               
+				
+					<li class="nav-first">
+						<a  class="nav-cur" id="a_196" href="
+						  
+							jgwzIndex.action?SqwzModel.sqwz_id=121&sqwzlmb_id=1&sqwzlmszb_id=196&fid=0
+						
+						" >
+						<span>
+							
+							
+								首页
+							
+						</span>
+						</a>
+					</li>
+				
+				
+				
+	   	 	
+               
+				
+				
+					<li>
+						
+						
+						<a id="a_197"  href="
+						   
+							jgwzFrame.action?SqwzModel.sqwz_id=121&sqwzlmb_id=2&sqwzlmszb_id=197
+						
+						" >
+						
+						
+						<span>
+							
+							
+								学院概况
+							
+						</span></a>
+					</li>
+				
+				
+	   	 	
+               
+				
+				
+					<li>
+						
+						
+						<a id="a_200"  href="
+						   
+							jgwzFrame.action?SqwzModel.sqwz_id=121&sqwzlmb_id=5&sqwzlmszb_id=200
+						
+						" >
+						
+						
+						<span>
+							
+							
+								通知公告
+							
+						</span></a>
+					</li>
+				
+				
+	   	 	
+               
+				
+				
+					<li>
+						
+						
+						<a id="a_198"  href="
+						   
+							jgwzFrame.action?SqwzModel.sqwz_id=121&sqwzlmb_id=3&sqwzlmszb_id=198
+						
+						" >
+						
+						
+						<span>
+							
+							
+								社教动态
+							
+						</span></a>
+					</li>
+				
+				
+	   	 	
+               
+				
+				
+					<li>
+						
+						
+						<a id="a_1275"  href="
+						
+						
+							  jgwzFrame.action?SqwzModel.sqwz_id=121&sqwzlmb_id=0&sqwzlmszb_id=1275
+						" >
+						
+						
+						<span>
+							
+							
+								培训超市
+							
+						</span></a>
+					</li>
+				
+				
+	   	 	
+               
+				
+				
+					<li>
+						
+						
+						<a id="a_1227"  href="
+						
+						
+							  jgwzFrame.action?SqwzModel.sqwz_id=121&sqwzlmb_id=0&sqwzlmszb_id=1227
+						" >
+						
+						
+						<span>
+							
+							
+								政策指导
+							
+						</span></a>
+					</li>
+				
+				
+	   	 	
+               
+				
+				
+					<li>
+						
+						
+						<a id="a_1228"  href="
+						   
+							jgwzFrame.action?SqwzModel.sqwz_id=121&sqwzlmb_id=11&sqwzlmszb_id=1228
+						
+						" >
+						
+						
+						<span>
+							
+							
+								积分排行
+							
+						</span></a>
+					</li>
+				
+				
+	   	 	
+               
+				
+				
+					<li>
+						
+						
+						<a id="a_201"  href="
+						   
+							jgwzFrame.action?SqwzModel.sqwz_id=121&sqwzlmb_id=6&sqwzlmszb_id=201
+						
+						" >
+						
+						
+						<span>
+							
+							
+								在线留言
+							
+						</span></a>
+					</li>
+				
+				
+	   	 	
+               
+				
+				
+					<li>
+						
+						
+						<a id="a_1090"  href="
+						
+						
+							  jgwzFrame.action?SqwzModel.sqwz_id=121&sqwzlmb_id=0&sqwzlmszb_id=1090
+						" >
+						
+						
+						<span>
+							
+							
+								积分兑换
+							
+						</span></a>
+					</li>
+				
+				
+	   	 	
+               
+				
+				
+					<li>
+						
+						
+						<a id="a_843"  href="
+						   
+							jgwzFrame.action?SqwzModel.sqwz_id=121&sqwzlmb_id=9&sqwzlmszb_id=843
+						
+						" >
+						
+						
+						<span>
+							
+							
+								课程中心
+							
+						</span></a>
+					</li>
+				
+				
+	   	 	
+               
+	   	 	
+               
+	   	 	
+      </ul>
+    </div>
+    <div class="othernav"  >
+     <span id="otherLinks">
+     
+      <a href="#">其他</a>
+     
+      <ul>
+        
+         
+        
+         
+        
+         
+        
+         
+        
+         
+        
+         
+        
+         
+        
+         
+        
+         
+        
+         
+        
+         
+        <li>
+             
+						
+						<a id="a_1191"  href="
+                    jgwzFrame.action?SqwzModel.sqwz_id=121&sqwzlmb_id=0&sqwzlmszb_id=1191&fid=0
+					" >
+					
+				 
+              
+				《长兴社区教育》报
+				
+				</a>
+        </li>
+        
+        
+         
+        <li>
+             
+						
+						<a id="a_202"  href="
+                       
+					jgwzFrame.action?SqwzModel.sqwz_id=121&sqwzlmb_id=7&sqwzlmszb_id=202&fid=0
+					" >
+					
+				 
+              
+				联系我们
+				
+				</a>
+        </li>
+        
+        
+      </ul>
+      </span>
+    </div>
+  </div>
+  
+    
+    <div id="ktMain" class="kt-main"> 
+    <!--栏一-->
+    <div id="dom0" class="kt-bar1" style="clear:both;"> 
+      
+      <!-- 模块列表-->
+      
+      <div id="m1" class="mod-pub mod-dmtjx">
+      	<input value="25" type="hidden" id="lmkid1" name="lmkid"/>
+  		<input value="25" type="hidden" id="mkid25" name="mkid"/>
+      <input value="长兴社区教育专题片" type="hidden" id="mkxsmc25" name="mkxsmc"/>
+  		<h3><span><em>长兴社区教育专题片</em></span><del id="gb_m25" style="display: none;"  onclick="del_div(this);qxmk('25');">【关闭】</del><a onclick="xcpmore(7060);" style="cursor:pointer">更多</a></h3>
+		<div class="vod-con">
+			<script type='text/javascript' src='jwplayer/jwplayer.min.js'></script><div id='mediaplayer-2017112402501511506218029'></div><script type="text/javascript">jwplayer('mediaplayer-2017112402501511506218029').setup({flashplayer: 'jwplayer/player1.swf',file: '/fileup/wlkt/sqwz/xcp/121/2017112402501511506218029.flv',id:'playerid',controlbar: 'bottom',width:224,height:231,image:'/fileup/wlkt/sqwz/xcp/121/2017112402501511506218029_1.jpg',autostart: false});</script>
+		</div>
+      </div>            
+      
+      
+      
+      <!-- 模块列表-->
+      
+       <div id="m0" class="mod-pub mod-login">
+        <input value="28" type="hidden" id="lmkid0" name="lmkid"/>
+        <input value="28" type="hidden" id="mkid28" name="mkid"/>
+        <input value="用户登录" type="hidden" id="mkxsmc28" name="mkxsmc"/>
+        <h3><span><em>用户登录</em></span>
+        <del id="gb_m28" style="display: none;" onclick="del_div(this);qxmk('28');">【关闭】</del></h3>
+         	<ul><li class="login-yhm"><label>用户名：</label><input class="inp-normal" type="text" style="width:80px" id="yhms" name="yhm" value=""/>&nbsp;<a style="cursor: pointer;" onclick="wjyhm()"><font color="#135db4" >忘记用户名?</font></a></li><li class="login-mm"><label>密　码：</label><input class="inp-normal" type="password" style="width:80px" id="mm" onkeypress="if(event.keyCode==13)code_save('Login.action?sign=jgwz&sqwzb_id=121')"  name="mm" value=""/>&nbsp;<a style="cursor: pointer;" onclick="wjmm()"><font color="#135db4" >忘记密码?</font></a></li><li class="login-yzm"><label>验证码：</label><input class="inp-normal inp-yzm" type="text" id="yzm" name="yzm" onkeypress="if(event.keyCode==13)code_save('Login.action?sign=jgwz&sqwzb_id=121');"/><img id="_yzm" src="yzm.jsp" alt="验证码"  title="看不清楚,点击后换下一张" onclick="_('_yzm').src='yzm.jsp?'+new Date().getTime();" /></li><li class="login-btn"><button type="button" onclick="if(login()){code_save('Login.action?sign=jgwz&sqwzb_id=121')}">登 录</button>&nbsp;&nbsp;<a href="indexYhzcnew.action?sign=jgwz&sqwzb_id=121"><font color="#135db4" >立即注册</font></a></li></ul>        
+      </div>        
+      
+      
+      
+      <!-- 模块列表-->
+      
+      
+      <div id="m9184" class="mod-pub mod-p mod-cwb"> 
+<input value="9184" type="hidden" id="mmkid9184" name="mmkid"/>
+<input value="9184" type="hidden" id="mkid9184" name="mkid"/>
+<input value="垃圾分类知识测试" type="hidden" id="mkxsmc9184" name="mkxsmc"/>
+<h3><span><em>垃圾分类知识测试</em></span><del id="gb_m9184"style="display: none;"  onclick="del_div(this);qxzdymk('9184');">【关闭】</del></h3>
+<p><span><p style="text-align: center;">
+	<a href="http://www.zjlll.cn/zsjypt/index_pxxmXx.action?xmxxb_id=1453"><img alt="" src="/fileup/wlkt/editor/upload/imgages/2018030512291520224197271.JPG" style="width: 221px; height: 191px;" /><br />
+	<span style="color:#ff0000;"><span style="font-family:黑体;"><strong><span style="background-color:#ffffff;">点击</span></strong></span></span></a><span style="color:#ff0000;"><span style="font-family:黑体;"><strong><span style="background-color:#ffffff;">图标进入测试</span></strong></span></span></p>
+<cite></cite></span></p></div>                
+      
+      
+      <!-- 模块列表-->
+      
+      
+      <div id="m8363" class="mod-pub mod-p mod-cwb"> 
+<input value="8363" type="hidden" id="mmkid8363" name="mmkid"/>
+<input value="8363" type="hidden" id="mkid8363" name="mkid"/>
+<input value="第三年龄学堂" type="hidden" id="mkxsmc8363" name="mkxsmc"/>
+<h3><span><em>第三年龄学堂</em></span><del id="gb_m8363"style="display: none;"  onclick="del_div(this);qxzdymk('8363');">【关闭】</del></h3>
+<p><span><a href="http://ln.zjlll.cn/zsjypt/oou_index.action"><img alt="" src="/fileup/wlkt/editor/upload/imgages/2015123012511451451062449.JPG" style="width: 225px; height: 147px;" /><br />
+</a><a href="http://ln.zjlll.cn/zsjypt/oou_index.action"><span style="color:#ff0000;"><span style="line-height:normal;"><strong><span style="font-family:微软雅黑;">&nbsp; &nbsp;欢迎进入</span></strong></span></span></a><a href="http://ln.zjlll.cn/zsjypt/oou_index.action"><span style="color:#ff0000;">第三年龄学堂</span></a><cite></cite></span></p></div>                
+      
+      
+      <!-- 模块列表-->
+      
+      
+      <div id="m7122" class="mod-pub mod-list mod-list-notime mod-lb"><input value="7122" type="hidden" id="mmkid7122" name="mmkid"/><input value="7122" type="hidden" id="mkid7122" name="mkid"/><input value="政策指导" type="hidden" id="mkxsmc7122" name="mkxsmc"/><input value="1" type="hidden" id="psftb_7122" name="psftb"/><h3><span><em>政策指导</em></span><del id="gb_m7122" style="display: none;" onclick="del_div(this);">【关闭】</del><a href="jgwzFrame.action?SqwzModel.sqwz_id=121&sqwzlmb_id=0&fid=0&sqwzlmszb_id=1227">更多</a></h3><ul><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=5672&fid=0&sqwzlmszb_id=1227">浙江省人民政府办公厅关于扶持发展老年教育事业的若干意见</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=5474&fid=0&sqwzlmszb_id=1227">老年教育发展规划（2016—2020年）</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=4888&fid=0&sqwzlmszb_id=1227">陈乃林：进一步推进社区教育发展为基本形成学习型社会夯实基础</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=4887&fid=0&sqwzlmszb_id=1227">教育部等九部门关于进一步推进社区教育发展的意见</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=4604&fid=0&sqwzlmszb_id=1227">关于公布2015年全国社区教育示范街道（乡镇）的通知</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=4580&fid=0&sqwzlmszb_id=1227">社区老年教育探索</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=4044&fid=0&sqwzlmszb_id=1227">浙江省人民政府关于加快发展现代职业教育的实施意见</a></cite></li></ul></div> 
+      
+      
+      <!-- 模块列表-->
+      
+      
+      <div id="m7117" class="mod-pub mod-p mod-cwb"> 
+<input value="7117" type="hidden" id="mmkid7117" name="mmkid"/>
+<input value="7117" type="hidden" id="mkid7117" name="mkid"/>
+<input value="社区教育中心" type="hidden" id="mkxsmc7117" name="mkxsmc"/>
+<h3><span><em>社区教育中心</em></span><del id="gb_m7117"style="display: none;"  onclick="del_div(this);qxzdymk('7117');">【关闭】</del></h3>
+<p><span><table border="0" cellpadding="0" cellspacing="0" height="99" width="200">
+	<tbody>
+		<tr>
+			<td>
+				<div align="center">
+					<a href="http://www.cxzccx.com/">雉城</a></div>
+			</td>
+			<td>
+				<div align="center">
+					<a href="http://cj.zjcxedu.com/cj/Resources/program/dashboardpreview.asp?href=/cj/Portal/ljxcx/" target="_blank">李家巷镇</a></div>
+			</td>
+			<td>
+				<div align="center">
+					<a href="http://cj.zjcxedu.com/cj/Resources/program/dashboardpreview.asp?href=/cj/Portal/hxqcx/" target="_blank">虹星桥镇</a></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div align="center">
+					<a href="http://www.cxskcx.com/" target="_blank">水口乡</a></div>
+			</td>
+			<td>
+				<div align="center">
+					<a href="http://www.cxhpcx.com/" target="_blank">和平镇</a></div>
+			</td>
+			<td>
+				<div align="center">
+					<a href="http://www.cxxhqcx.com/">洪桥镇</a></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div align="center">
+					<a href="http://cj.zjcxedu.com/cj/Resources/program/dashboardpreview.asp?href=/cj/Portal/xpcx/" target="_blank">小浦镇</a></div>
+			</td>
+			<td>
+				<div align="center">
+					<a href="http://www.lscxedu.com/" target="_blank">吕山乡</a></div>
+			</td>
+			<td>
+				<div align="center">
+					<a href="http://cj.zjcxedu.com/cj/Resources/program/dashboardpreview.asp?href=/cj/Portal/mscx/" target="_blank">煤山镇</a></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div align="center">
+					<a href="http://cj.zjcxedu.com/cj/Resources/program/dashboardpreview.asp?href=/cj/Portal/jpcx/" target="_blank">夹浦镇</a></div>
+			</td>
+			<td>
+				<div align="center">
+					<a href="http://cj.zjcxedu.com/cj/Resources/program/dashboardpreview.asp?href=/cj/Portal/siancx/" target="_blank">泗安镇</a></div>
+			</td>
+			<td>
+				<div align="center">
+					<a href="http://cj.zjcxedu.com/cj/Resources/program/dashboardpreview.asp?href=/cj/Portal/lccx/" target="_blank">林城镇</a></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div align="center">
+					&nbsp;</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<cite></cite></span></p></div>                
+      
+      
+      <!-- 模块列表-->
+      
+      <div id="m7" class="mod-pub mod-list mod-xsly">
+      <input value="26" type="hidden" id="rmkid7" name="rmkid"/>
+      <input value="26" type="hidden" id="mkid26" name="mkid"/>
+      <input value="留言板" type="hidden" id="mkxsmc26" name="mkxsmc"/>
+        <h3><span><em>留言板</em></span>
+        <del id="gb_m26" style="display: none;" onclick="del_div(this);qxmk('26');">【关闭】</del><a onclick="wzly()" style="cursor:pointer">更多</a></h3>
+         <ul>
+            <li><cite><a onclick="wzly()" style="cursor:pointer">举报蒋武，天理难容，</a></cite></li><li><cite><a onclick="wzly()" style="cursor:pointer" >多吃柠檬，有益身心健康</a></cite></li><li><cite><a onclick="wzly()" style="cursor:pointer" >@王冠宇</a></cite></li><li><cite><a onclick="wzly()" style="cursor:pointer" >@王冠宇</a></cite></li><li><cite><a onclick="wzly()" style="cursor:pointer" >@王冠宇</a></cite></li><li><cite><a onclick="wzly()" style="cursor:pointer" >@王冠宇</a></cite></li>
+        </ul>
+      </div>      
+      
+      
+      
+    </div>
+    <!--主体栏-->
+    <div id="dom1" class="kt-con"> 
+      
+       <!--模块列表-->
+      
+      <div id="m6" class="mod-pub mod-tpzs" title="拖拽此模块时，由于图片为动态加载，所以图片将不会显示，当点击保存就会出现">
+      <input value="24" type="hidden" id="rmkid6" name="rmkid"/>
+      <input value="24" type="hidden" id="mkid24" name="mkid"/>
+       <input value="图片新闻" type="hidden" id="mkxsmc24" name="mkxsmc"/>
+        <h3><span><em>图片新闻</em></span><del  id="gb_m24" style="display: none;" onclick="del_div(this);qxmk('24');">【关闭】</del></h3>
+        <div class="mod-tpzs-con">
+        <div id="myFocus" class="picfocus" style="height:200px">
+          <div class="loading"><span>请稍候...</span></div>
+          <ul class="pic">
+           <li><a href="http://cx.zjlll.cn/zsjypt/jgwzgzdtck.action?sqwzgzdtb_id=4053&sqwzlmb_id=3&sign=gzdtck&sqwzlmszb_id=198&fid=0" target="_blank"><img style="height:200px" src="/fileup/wlkt/sqwz/zstp/121/2018030908281520555308170.JPG" alt="长兴县召开2018年成人教育和社区教育工作会议" /></a></li><li><a href="http://cx.zjlll.cn/zsjypt/jgwzgzdtck.action?sqwzgzdtb_id=3626&sqwzlmb_id=3&sign=gzdtck&sqwzlmszb_id=198&fid=0" target="_blank"><img style="height:200px" src="/fileup/wlkt/sqwz/zstp/121/2017112112541511240086540.JPG" alt="2017年长兴县全民终身学习活动周启动仪式隆重举行" /></a></li><li><a href="http://cx.zjlll.cn/zsjypt/jgwzgzdtck.action?sqwzgzdtb_id=3626&sqwzlmb_id=3&sign=gzdtck&sqwzlmszb_id=198&fid=0" target="_blank"><img style="height:200px" src="/fileup/wlkt/sqwz/zstp/121/2017112112511511239910631.JPG" alt="2017年长兴县全民终身学习活动周启动仪式隆重举行" /></a></li><li><a href="http://cx.zjlll.cn/zsjypt/jgwzTzggck.action?sqwztzggb_id=1495&sqwzlmb_id=5&sign=tzggck&sqwzlmszb_id=200&fid=0" target="_blank"><img style="height:200px" src="/fileup/wlkt/sqwz/zstp/121/2017042811481493351320248.jpg" alt="“剿灭劣Ⅴ类水 社区教育志愿者在行动”倡议书" /></a></li>
+          </ul>
+        </div>
+        </div>
+      </div>
+                                                                                                                                                                                                        
+      
+      
+      
+       <!--模块列表-->
+      
+      <div id="m5" class="mod-pub mod-list mod-kctz">
+      <input value="21" type="hidden" id="mmkid5" name="mmkid"/>
+      <input value="21" type="hidden" id="mkid21" name="mkid"/>
+      <input value="社教动态" type="hidden" id="mkxsmc21" name="mkxsmc"/>
+        <h3><span><em>社教动态</em></span>
+        <del id="gb_m21" style="display: none;" onclick="del_div(this);qxmk('21');">【关闭】</del><a onclick="gzdtmore();" style="cursor:pointer">更多</a></h3>
+          <ul>
+          <li><cite><a onclick="gzdtck('4077','198','0')" style="cursor:pointer">泗安:守护绿水青山 共筑美丽家园<img src="style-zsjy/images/ico_new02.gif"/></a></cite><span class='text-overflow'>2018-03-13</span></li><li><cite><a onclick="gzdtck('4080','198','0')" style="cursor:pointer">湖州市教育局职成处领导来虹星桥成校指导农科教项目立项实施工作<img src="style-zsjy/images/ico_new02.gif"/></a></cite><span class='text-overflow'>2018-03-13</span></li><li><cite><a onclick="gzdtck('4074','198','0')" style="cursor:pointer">长兴泗安成校2018年首期育婴员培训开班<img src="style-zsjy/images/ico_new02.gif"/></a></cite><span class='text-overflow'>2018-03-12</span></li><li><cite><a onclick="gzdtck('4073','198','0')" style="cursor:pointer">洪桥成校新学期“双证制”班开课  <img src="style-zsjy/images/ico_new02.gif"/></a></cite><span class='text-overflow'>2018-03-12</span></li><li><cite><a onclick="gzdtck('4071','198','0')" style="cursor:pointer">长兴泗安成校纪念“三八”国际妇女节暨垃圾分类知识讲座<img src="style-zsjy/images/ico_new02.gif"/></a></cite><span class='text-overflow'>2018-03-12</span></li><li><cite><a onclick="gzdtck('4066','198','0')" style="cursor:pointer">李家巷社区教育中心开展垃圾分类宣传主题活动<img src="style-zsjy/images/ico_new02.gif"/></a></cite><span class='text-overflow'>2018-03-10</span></li>
+        </ul>
+      </div>            
+      
+      
+      
+       <!--模块列表-->
+      
+      
+      <div id="m8214" class="mod-pub mod-sqjy">
+<input value="8214" type="hidden" id="mmkid8214" name="mmkid"/>
+<input value="8214" type="hidden" id="mkid8214" name="mkid"/>
+<input value="课程中心" type="hidden" id="mkxsmc8214" name="mkxsmc"/>
+<h3><span><em>课程中心</em></span><del id="gb_m8214" style="display: none;" onclick="del_div(this);qxzdymk('8214');">【关闭】</del>
+<a href="javascript:zdymkckzyzx('-1','','tlbmore');">更多</a></h3>
+<div class="sqjy">
+<ul><li><a style="cursor: pointer;" onclick="showVideo('86044')"><img src="http://122.224.161.26/vod//2017/10/18/ebb8ff8c-b574-4bad-820b-55546f4227ae/Scorm/6908e487-1ebd-43cb-812b-7dfc60ee82a2.JPG" width="90px" height="67px"/></a><p>径山红绿</p><p><div class="xxzynum"><a style="cursor: pointer;" onclick="showVideo('86044')"><span title="播放" class="xxzywatch_num" >1903</span> </a> <a style="cursor: pointer;" onclick="showVideo('86044')"><span title="评论" class="xxzypl_num">0</span></a></div></p></li><li><a style="cursor: pointer;" onclick="showVideo('86045')"><img src="../../upload/2018/3/8/2018030802311520490706045.jpg" width="90px" height="67px"/></a><p>家庭烹调——鱼香茄条</p><p><div class="xxzynum"><a style="cursor: pointer;" onclick="showVideo('86045')"><span title="播放" class="xxzywatch_num" >1466</span></a><a style="cursor: pointer;" onclick="showVideo('86045')"> <span title="评论" class="xxzypl_num">0</span></a></div></p></li><li><a style="cursor: pointer;" onclick="showVideo('87667')"><img src="http://122.224.161.26/vod//2017/11/26/d1b3801b-9a17-436a-9083-e6e5d10662d0/Scorm/772b2c98-131a-4875-a98c-5a3cbff92152.JPG" width="90px" height="67px"/></a><p>杭州饮食史：北宋饮食文化</p><p><div class="xxzynum"><a style="cursor: pointer;" onclick="showVideo('87667')"><span title="播放" class="xxzywatch_num" >1350</span></a><a style="cursor: pointer;" onclick="showVideo('87667')"> <span title="评论" class="xxzypl_num">0</span></a></div></p></li><li><a style="cursor: pointer;" onclick="showVideo('87853')"><img src="http://122.224.161.26/vod//2017/11/26/838af58a-f272-4984-a0e4-2348a45a6765/Scorm/5f3b3e4b-9d4b-457c-a296-6c9edf764989.JPG" width="90px" height="67px"/></a><p>杭州饮食史：南宋名菜考述</p><p><div class="xxzynum"><a style="cursor: pointer;" onclick="showVideo('87853')"><span title="播放" class="xxzywatch_num" >939</span></a><a style="cursor: pointer;" onclick="showVideo('87853')"> <span title="评论" class="xxzypl_num">0</span></a></div></p></li><li><a style="cursor: pointer;" onclick="showVideo('87795')"><img src="../../upload/2017/12/6/2017120601301512538202989.jpg" width="90px" height="67px"/></a><p>多肉宝宝的培育和养护方法</p><p><div class="xxzynum"><a style="cursor: pointer;" onclick="showVideo('87795')"><span title="播放" class="xxzywatch_num" >1259</span></a><a style="cursor: pointer;" onclick="showVideo('87795')"> <span title="评论" class="xxzypl_num">0</span></a></div></p></li><li><a style="cursor: pointer;" onclick="showVideo('87715')"><img src="../../upload/2017/12/6/2017120601211512537691212.jpg" width="90px" height="67px"/></a><p>茶包小偏方：轻松减肥茶包</p><p><div class="xxzynum"><a style="cursor: pointer;" onclick="showVideo('87715')"><span title="播放" class="xxzywatch_num" >2191</span></a><a style="cursor: pointer;" onclick="showVideo('87715')"> <span title="评论" class="xxzypl_num">0</span></a></div></p></li><li><a style="cursor: pointer;" onclick="showVideo('87671')"><img src="../../upload/2017/12/6/2017120601151512537358148.jpg" width="90px" height="67px"/></a><p>茶包小偏方：日常保健茶包</p><p><div class="xxzynum"><a style="cursor: pointer;" onclick="showVideo('87671')"><span title="播放" class="xxzywatch_num" >1689</span></a><a style="cursor: pointer;" onclick="showVideo('87671')"> <span title="评论" class="xxzypl_num">0</span></a></div></p></li><li><a style="cursor: pointer;" onclick="showVideo('87713')"><img src="http://122.224.161.26/vod//2017/11/26/66527889-7281-4d30-bbe9-20a8e0ee99ba/Scorm/3b169360-59d7-4fbc-9214-927f29246b72.jpg" width="90px" height="67px"/></a><p>宠物宝典：犬的基本知识</p><p><div class="xxzynum"><a style="cursor: pointer;" onclick="showVideo('87713')"><span title="播放" class="xxzywatch_num" >952</span></a><a style="cursor: pointer;" onclick="showVideo('87713')"> <span title="评论" class="xxzypl_num">0</span></a></div></p></li></ul>
+</div>
+</div>                         
+      
+      
+       <!--模块列表-->
+      
+      
+      <div id="m7173" class="mod-pub mod-list mod-list-notime mod-lb"><input value="7173" type="hidden" id="mmkid7173" name="mmkid"/><input value="7173" type="hidden" id="mkid7173" name="mkid"/><input value="培训超市" type="hidden" id="mkxsmc7173" name="mkxsmc"/><input value="1" type="hidden" id="psftb_7173" name="psftb"/><h3><span><em>培训超市</em></span><del id="gb_m7173" style="display: none;" onclick="del_div(this);">【关闭】</del><a href="jgwzFrame.action?SqwzModel.sqwz_id=121&sqwzlmb_id=0&fid=0&sqwzlmszb_id=1275">更多</a></h3><ul><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=6994&fid=0&sqwzlmszb_id=1275">老年开放大学长兴学院2018春招生简章</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=6307&fid=0&sqwzlmszb_id=1275">老年开放大学长兴学院2017年秋季招生简章</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=5682&fid=0&sqwzlmszb_id=1275">浙江老年开放大学长兴学院（长兴电大）2017年春季  合唱班招生简章</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=5062&fid=0&sqwzlmszb_id=1275">长兴奥鹏远程学习中心2016年秋季招生简章</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=4506&fid=0&sqwzlmszb_id=1275">长兴电大2016年春季开放教育招生简章</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=4425&fid=0&sqwzlmszb_id=1275">长兴电大2016年3月全国英语等级考试报名通知</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=4051&fid=0&sqwzlmszb_id=1275">长兴电大会计从业资格考试培训招生简章</a></cite></li></ul></div> 
+      
+      
+       <!--模块列表-->
+      
+      <div id="m9" class="mod-pub mod-jsdw" title="此模块拖拽时，由于模块宽度动态加载，需保存刷新页面看到效果">
+ <input value="29" type="hidden" id="mmkid9" name="mmkid"/>
+       <input value="29" type="hidden" id="mkid29" name="mkid"/>
+       <input value="积分商城" type="hidden" id="mkxsmc29" name="mkxsmc"/>
+        <h3><span><em>积分商城</em></span><del id="gb_m29" style="display: none;"  onclick="del_div(this);qxmk('29');">【关闭】</del></h3><!-- <a href="#">更多</a>-->
+<div class="mod-jsdw-con">
+       <div id="jsdw" class="mod-list-pic"  style="height:100%;">
+          <span><a onclick="jsck('javascript:void(0);')" style="cursor:pointer"><img style="width:115px;height:115px" src="/fileup/wlkt/sqwz/gzfc/121/2015061704521434531126005.jpg"  title="无线鼠标（B类）" alt='无线鼠标（B类）' /></a><strong title='dddddddd'><a onclick="jsck('javascript:void(0);')" style="cursor:pointer">无线鼠标（B类）</a></strong></span> <span><a onclick="jsck('javascript:void(0);')" style="cursor:pointer"><img style="width:115px;height:115px"src="/fileup/wlkt/sqwz/gzfc/121/2015061704531434531207666.jpg"  title="高级水杯（B类）" alt="高级水杯（B类）" /></a><strong title='dddddddd'><a onclick="jsck('javascript:void(0);')" style="cursor:pointer" >高级水杯（B类）</a></strong></span> <span><a onclick="jsck('javascript:void(0);')" style="cursor:pointer"><img style="width:115px;height:115px"src="/fileup/wlkt/sqwz/gzfc/121/2015061704541434531292405.jpg"  title="移动电源（B类）" alt="移动电源（B类）" /></a><strong title='dddddddd'><a onclick="jsck('javascript:void(0);')" style="cursor:pointer" >移动电源（B类）</a></strong></span> <span><a onclick="jsck('javascript:void(0);')" style="cursor:pointer"><img style="width:115px;height:115px"src="/fileup/wlkt/sqwz/gzfc/121/2015061704561434531417182.jpg"  title="网络摄像头（B类）" alt="网络摄像头（B类）" /></a><strong title='dddddddd'><a onclick="jsck('javascript:void(0);')" style="cursor:pointer" >网络摄像头（B类）</a></strong></span> <span><a onclick="jsck('javascript:void(0);')" style="cursor:pointer"><img style="width:115px;height:115px"src="/fileup/wlkt/sqwz/gzfc/121/2015061704551434531351275.jpg"  title="车载吸尘器（B类）" alt="车载吸尘器（B类）" /></a><strong title='dddddddd'><a onclick="jsck('javascript:void(0);')" style="cursor:pointer" >车载吸尘器（B类）</a></strong></span> <span><a onclick="jsck('javascript:void(0);')" style="cursor:pointer"><img style="width:115px;height:115px"src="/fileup/wlkt/sqwz/gzfc/121/2015061705001434531628081.jpg"  title="篮球（A类）" alt="篮球（A类）" /></a><strong title='dddddddd'><a onclick="jsck('javascript:void(0);')" style="cursor:pointer" >篮球（A类）</a></strong></span> <span><a onclick="jsck('javascript:void(0);')" style="cursor:pointer"><img style="width:110px;height:115px"src="/fileup/wlkt/sqwz/gzfc/121/2015061705031434531795810.jpg"  title="U盘（A类）" alt="U盘（A类）" /></a><strong title='dddddddd'><a onclick="jsck('javascript:void(0);')" style="cursor:pointer" >U盘（A类）</a></strong></span> <span><a onclick="jsck('javascript:void(0);')" style="cursor:pointer"><img style="width:115px;height:115px"src="/fileup/wlkt/sqwz/gzfc/121/2015061705061434531960012.jpg"  title="羽毛球拍（A类）" alt="羽毛球拍（A类）" /></a><strong title='dddddddd'><a onclick="jsck('javascript:void(0);')" style="cursor:pointer" >羽毛球拍（A类）</a></strong></span> <span><a onclick="jsck('javascript:void(0);')" style="cursor:pointer"><img style="width:115px;height:115px"src="/fileup/wlkt/sqwz/gzfc/121/2015061705041434531882762.jpg"  title="保温水壶（A类）" alt="保温水壶（A类）" /></a><strong title='dddddddd'><a onclick="jsck('javascript:void(0);')" style="cursor:pointer" >保温水壶（A类）</a></strong></span> <span><a onclick="jsck('javascript:void(0);')" style="cursor:pointer"><img style="width:115px;height:115px"src="/fileup/wlkt/sqwz/gzfc/121/2015061705081434532120603.jpg"  title="小风扇（A类）" alt="小风扇（A类）" /></a><strong title='dddddddd'><a onclick="jsck('javascript:void(0);')" style="cursor:pointer" >小风扇（A类）</a></strong></span> <span><a onclick="jsck('http://www.zjlll.cn/zsjypt/jgwzZdylm.action?sqwzlmnrszb_id=1208&fid=0&sqwzlmszb_id=1090')" style="cursor:pointer"><img style="width:160px;height:115px"src="/fileup/wlkt/sqwz/gzfc/121/2015062403141435130059742.JPG"  title="学习积分兑换办法" alt="学习积分兑换办法" /></a><strong title='dddddddd'><a onclick="jsck('http://www.zjlll.cn/zsjypt/jgwzZdylm.action?sqwzlmnrszb_id=1208&fid=0&sqwzlmszb_id=1090')" style="cursor:pointer" >学习积分兑换办法</a></strong></span>       
+       </div>
+         <a id="jsdwLeft"  title="按下鼠标速度加快"><em>向左</em></a><a title="按下鼠标速度加快"  id="jsdwRight"><em>向右</em></a>
+        <script type="text/javascript">
+    var jsdw=new Marquee("jsdw");
+    var jsdwObj=document.getElementById("jsdw");
+    var jsdwObjWid=jsdwObj.clientWidth;
+    var jsdwObjHei=jsdwObj.clientHeight;
+    jsdw.Direction="left";
+    jsdw.Step=1;
+    jsdw.Width=jsdwObjWid;
+    jsdw.Height=jsdwObjHei;
+    jsdw.Timer=20;
+    jsdw.Start();
+    jsdwLeft.onmouseover=function(){jsdw.Direction=2}
+    jsdwLeft.onmouseout=jsdwLeft.onmouseup=function(){jsdw.Step=jsdw.BakStep}
+    jsdwLeft.onmousedown=jsdwRight.onmousedown=function(){jsdw.Step=jsdw.BakStep+2}
+    jsdwRight.onmouseover=function(){jsdw.Direction=3}
+    jsdwRight.onmouseout=jsdwRight.onmouseup=function(){jsdw.Step=jsdw.BakStep}
+    </script>
+      </div>    
+</div>                                                         
+      
+      
+      
+    </div>
+    <!--栏二-->
+    <div id="dom2" class="kt-bar2"> 
+      
+       <!--模块列表-->
+      
+      <div id="m3" class="mod-pub mod-list mod-kctz">
+       <input value="20" type="hidden" id="mmkid3" name="mmkid"/>
+       <input value="20" type="hidden" id="mkid20" name="mkid"/>
+       <input value="长兴社区学院概况" type="hidden" id="mkxsmc20" name="mkxsmc"/>
+        <h3><span><em>长兴社区学院概况</em></span><del id="gb_m20" style="display: none;"  onclick="del_div(this);qxmk('20');">【关闭】</del></h3>
+       <div class="p-dl-text"><img class="pic-kcfm" src="/fileup/wlkt/sqwz/wzfm/2013102411131382584411409.jpg" alt="网站封面" title="网站封面" /> <span  class="kcjj-xxxx"> <p>
+	&nbsp;&nbsp;&nbsp;&nbsp;<span style="line-height: 2em"><span style="font-size: 14px">&nbsp; <span style="font-size: 16px"><span style="line-height: 150%; font-family: 宋体; color: black; font-size: 12pt; mso-ascii-font-family: 'times new roman'; mso-hansi-font-family: 'times new roman'">长兴社区学院位于长兴县雉城镇长海路</span><span lang="EN-US" style="line-height: 150%; color: black; font-size: 12pt"><font face="Times New Roman">619</font></span><span style="line-height: 150%; font-family: 宋体; color: black; font-size: 12pt; mso-ascii-font-family: 'times new roman'; mso-hansi-font-family: 'times new roman'">号，于</span><span lang="EN-US" style="line-height: 150%; color: black; font-size: 12pt"><font face="Times New Roman">2006</font></span><span style="line-height: 150%; font-family: 宋体; color: black; font-size: 12pt; mso-ascii-font-family: 'times new roman'; mso-hansi-font-family: 'times new roman'">年</span><span lang="EN-US" style="line-height: 150%; color: black; font-size: 12pt"><font face="Times New Roman">6</font></span><span style="line-height: 150%; font-family: 宋体; color: black; font-size: 12pt; mso-ascii-font-family: 'times new roman'; mso-hansi-font-family: 'times new roman'">月挂牌成立，是以浙江广播电视大学长兴学院、长兴教师进修学院为基础，集社区教育、成人高等学历教育、职业教育、中小学教师继续教育和农民教育的&ldquo;小实体、多功能、大服务&rdquo;的综合性地方高等学校，学院环境优雅，办学条件优越，师资力量雄厚，为社区居民提供全方位、多层次、多类型的学历与非学历教育服务。长兴社区学院在长兴县社区教育工作领导小组办公室的领导下，充分发挥对全县社区教育指导、示范、辐射和协助管理的作用，肩负着对全县社区教育工作的指导与谋划职能，具体负责全县社区教育工作的开展和研究。</span><span lang="EN-US" style="line-height: 150%; color: black; font-size: 12pt"><o:p></o:p></span></span></span></span></p>
+<p class="MsoNormal" style="line-height: 150%; text-indent: 24pt; margin: 0cm 0cm 0pt; mso-char-indent-count: 2.0">
+	<span style="line-height: 2em"><span style="font-size: 14px"><span style="font-size: 16px"><span style="line-height: 150%; font-family: 宋体; color: black; font-size: 12pt; mso-ascii-font-family: 'times new roman'; mso-hansi-font-family: 'times new roman'">长兴社区学院始终结合长兴实际，与时俱进，创造性、扎实地开展工作，走出了一条具有长兴特色的社区教育之路。打造&ldquo;社区大讲堂&rdquo;公益讲座品牌，满足市民学习需求；开发长兴社区教育联盟网站，推进农村社区教育数字化建设；组织全县乡镇社区教育中心教师</span><span lang="EN-US" style="line-height: 150%; color: black; font-size: 12pt"><font face="Times New Roman">90</font></span><span style="line-height: 150%; font-family: 宋体; color: black; font-size: 12pt; mso-ascii-font-family: 'times new roman'; mso-hansi-font-family: 'times new roman'">学时培训，创新社区教育工作者培训模式；开展农民大学生学历教育，培育新型农民；打造市民学习共同体，传承弘扬优秀地域文化。学院工作得到了中央电大、省教育厅、省电大、市县等各级领导和社区教育专家的肯定。学院先后荣获全国首批示范性基层电大、全国厂（校）务公开民主管理先进单位、省文明单位、省社区教育示范学院、</span><font color="#000000"><span style="line-height: 150%; font-family: 宋体; font-size: 12pt">省示范性县级教师培训机构、</span><span style="line-height: 150%; font-family: 宋体; color: black; font-size: 12pt; mso-ascii-font-family: 'times new roman'; mso-hansi-font-family: 'times new roman'">省艺术特色学校、省语言文字规范化示范校、省卫生先进单位、省电大系统办学先进单位、全省电大系统科学研究先进单位、湖州市禁毒教育示范校、长兴县人才工作示范基地等</span></font><span lang="EN-US" style="line-height: 150%; color: black; font-size: 12pt"><font face="Times New Roman">40</font></span><span style="line-height: 150%; font-family: 宋体; color: black; font-size: 12pt; mso-ascii-font-family: 'times new roman'; mso-hansi-font-family: 'times new roman'">余项国家、省、市、县级荣誉称号。先后被确定为全国公共英语等级考试考点、全国计算机等级考试考点、国际单证员培训考证点、计算机中级工培训考证点、保育员培训考证点、湖州市普通话培训测试中心长兴培训点、长兴县会计从业资格无纸化考试培训教学点等。为提升广大市民素质、建设学习型社会、打响&ldquo;学在长兴&rdquo;品牌做出了积极的贡献。</span><span lang="EN-US" style="line-height: 150%; color: black; font-size: 12pt"><o:p></o:p></span></span></span></span></p>
+<p>
+	<span _fck_bookmark="1" style="display: none">&nbsp;</span></p>
+ </span><cite><a style="cursor:pointer" onclick="wzjsck();" class="kcjs-ckxx">查看详细</a></cite> </div>      </div> 
+
+      
+      
+                                 
+      
+      
+      
+       <!--模块列表-->
+      
+      <div id="m4" class="mod-pub mod-list mod-kctz">
+       <input value="23" type="hidden" id="mmkid4" name="mmkid"/>
+       <input value="23" type="hidden" id="mkid23" name="mkid"/>
+       <input value="通知公告" type="hidden" id="mkxsmc23" name="mkxsmc"/>
+        <h3><span><em>通知公告</em></span>
+        <del id="gb_m23" style="display: none;" onclick="del_div(this);qxmk('23');">【关闭】</del><a onclick="tzmore()" style="cursor:pointer">更多</a></h3>
+         <ul>
+           <li><cite><a onclick="tzck('2049','200','0')" style="cursor:pointer" title=关于做好第六批全国农村优秀学习型组织、第二批城乡社区教育特色学校申报材料报送工作的通知>关于做好第六批全国农村优秀学习型组织、第二批城乡社区教育特色学校申报材料报送工作的通知</a></cite><span class='text-overflow'>18-03-03</span></li><li><cite><a onclick="tzck('1984','200','0')" style="cursor:pointer" title=关于做好第六批全国农村优秀学习型组织、第二批城乡社区教育特色学校遴选工作的通知>关于做好第六批全国农村优秀学习型组织、第二批城乡社区教育特色学校遴选工作的通知</a></cite><span class='text-overflow'>18-01-16</span></li><li><cite><a onclick="tzck('1983','200','0')" style="cursor:pointer" title=长兴县教育局办公室关于推荐评选2017年度长兴县十佳社区教育优秀工作者的通知>长兴县教育局办公室关于推荐评选2017年度长兴县十佳社区教育优秀工作者的通知</a></cite><span class='text-overflow'>18-01-15</span></li><li><cite><a onclick="tzck('1982','200','0')" style="cursor:pointer" title=关于评选2017年度长兴县十佳社区教育优秀通讯员的通知>关于评选2017年度长兴县十佳社区教育优秀通讯员的通知</a></cite><span class='text-overflow'>18-01-15</span></li><li><cite><a onclick="tzck('1912','200','0')" style="cursor:pointer" title=关于公布第二批长兴市民终身学习体验基地名单的通知>关于公布第二批长兴市民终身学习体验基地名单的通知</a></cite><span class='text-overflow'>17-12-28</span></li><li><cite><a onclick="tzck('1911','200','0')" style="cursor:pointer" title=关于公布2017年长兴县示范社区学习共同体评选结果的通知>关于公布2017年长兴县示范社区学习共同体评选结果的通知</a></cite><span class='text-overflow'>17-12-28</span></li>
+        </ul>
+      </div>      
+      
+      
+      
+       <!--模块列表-->
+      
+      
+      <div id="m7070" class="mod-pub mod-p mod-kcjs"> <input value="7070" type="hidden" id="mmkid7070" name="mmkid"/> <input value="7070" type="hidden" id="mkid7070" name="mkid"/> <input value="积分兑换" type="hidden" id="mkxsmc7070" name="mkxsmc"/><input value="1" type="hidden" id="psftb_7070" name="psftb"/><h3><span><em>积分兑换</em></span><del id="gb_m7070" style="display: none;" onclick="del_div(this);">【关闭】</del><a href="jgwzFrame.action?SqwzModel.sqwz_id=121&sqwzlmb_id=0&fid=0&sqwzlmszb_id=1090">更多</a></h3> <div class="p-dl-text"><img class="pic-kcfm" src="/fileup/wlkt/sqwz/lmnrfm/121/1090/2013/10/24/201310248ae4979041e8755b0141e8d95c920002.jpg"/><span  class="kcjj-xxxx"><ul><li  class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=1208&fid=0&sqwzlmszb_id=1090">学习积分兑换办法</a></cite></li><li  class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=1181&fid=0&sqwzlmszb_id=1090">在线学习指南</a></cite></li></ul></span></div></div>  
+      
+      
+       <!--模块列表-->
+      
+      
+      <div id="m9163" class="mod-pub mod-p mod-cwb"> 
+<input value="9163" type="hidden" id="mmkid9163" name="mmkid"/>
+<input value="9163" type="hidden" id="mkid9163" name="mkid"/>
+<input value="长兴县图书馆数字化学习平台" type="hidden" id="mkxsmc9163" name="mkxsmc"/>
+<h3><span><em>长兴县图书馆数字化学习平台</em></span><del id="gb_m9163"style="display: none;"  onclick="del_div(this);qxzdymk('9163');">【关闭】</del></h3>
+<p><span><br />
+<a href="http://cxlib.chaoxing.com/"><img alt="" src="/fileup/wlkt/editor/upload/imgages/2018011501531515995592247.JPG" style="width: 226px; height: 162px;" /></a><br />
+<a href="http://cxlib.chaoxing.com/"><span style="line-height:2em;"><span style="color:#ff0000;"><strong><span style="font-family:微软雅黑;">欢迎进入长兴县图书馆数字化学习平台</span></strong></span></span></a><cite></cite></span></p></div>                
+      
+      
+       <!--模块列表-->
+      
+      
+      <div id="m7088" class="mod-pub mod-list mod-list-notime mod-lb"><input value="7088" type="hidden" id="mmkid7088" name="mmkid"/><input value="7088" type="hidden" id="mkid7088" name="mkid"/><input value="《长兴社区教育》报" type="hidden" id="mkxsmc7088" name="mkxsmc"/><input value="1" type="hidden" id="psftb_7088" name="psftb"/><h3><span><em>《长兴社区教育》报</em></span><del id="gb_m7088" style="display: none;" onclick="del_div(this);">【关闭】</del><a href="jgwzFrame.action?SqwzModel.sqwz_id=121&sqwzlmb_id=0&fid=0&sqwzlmszb_id=1191">更多</a></h3><ul><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=7045&fid=0&sqwzlmszb_id=1191">《长兴社区教育》第20期</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=6798&fid=0&sqwzlmszb_id=1191">《长兴社区教育》第19期</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=6191&fid=0&sqwzlmszb_id=1191">《长兴社区教育》第18期</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=5977&fid=0&sqwzlmszb_id=1191">《长兴社区教育》第17期</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=5545&fid=0&sqwzlmszb_id=1191">《长兴社区教育》第16期</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=5317&fid=0&sqwzlmszb_id=1191">《长兴社区教育》第15期</a></cite></li><li class='text-overflow'><cite><a href="jgwzZdylm.action?sqwzlmnrszb_id=4838&fid=0&sqwzlmszb_id=1191">《长兴社区教育》第14期</a></cite></li></ul></div> 
+      
+      
+       <!--模块列表-->
+      
+      <div id="m8" class="mod-pub mod-list mod-list-notime mod-yqlj">
+      <input value="27" type="hidden" id="rmkid8" name="rmkid"/>
+      <input value="27" type="hidden" id="mkid27" name="mkid"/>
+      <input value="友情链接" type="hidden" id="mkxsmc27" name="mkxsmc"/>
+        <h3><span><em>友情链接</em></span>
+        <del id="gb_m27" style="display: none;" onclick="del_div(this);qxmk('27');">【关闭】</del><a onclick="yqljmore(7068)" style="cursor:pointer">更多</a></h3>
+        <ul>
+        <li><cite><a href="http://www.zjce.edu.cn/" target="_blank">浙江社区教育网</a></cite></li><li><cite><a href="http://www.ccedu.org.cn/" target="_blank">中国社区教育网</a></cite></li><li><cite><a href="http://www.zjcxedu.com/" target="_blank">长兴教育网</a></cite></li><li><cite><a href="http://jj.cxtvu.com" target="_blank">长兴教师继续教育网</a></cite></li><li><cite><a href="http://www.cxtvu.com" target="_blank">浙江电大长兴学院</a></cite></li><li><cite><a href="http://www.zjlll.cn" target="_blank">浙江终身学习在线</a></cite></li>       
+        </ul>
+      </div>            
+      
+      
+      
+    </div>
+  </div>
+    
+  <!--底部信息-->
+  <div class="footer">
+  <p>
+  <p style="text-align: center">
+	<span style="line-height: 100%">主办：长兴社区学院 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;电话：0572-6202776</span></p>
+<p style="text-align: center">
+	<span style="line-height: 100%">地址：长兴县雉城镇长海路619号 &nbsp; &nbsp;电子邮箱：cxsqxy@qq.com &nbsp; &nbsp; 邮编：313100</span></p>
+<br />
+     
+      </p>
+  </div>
+</form>
+
+
+
+
+
+
+<script type="text/javascript" src="wlkt/js/myFocus.js"></script>
+<script type="text/javascript">
+//其他导航显示脚本
+var otherLinks=document.getElementById("otherLinks");
+otherLinks.parentNode.onmouseover=function(){
+	if(this.getElementsByTagName("ul").length<1) return false;
+	this.getElementsByTagName("ul")[0].style.display="block";
+}
+otherLinks.parentNode.onmouseout=function(){
+	this.getElementsByTagName("ul")[0].style.display="none";
+}
+myFocus.setting({style:'mF_expo2010',id:'myFocus',time:3});
+	if(document.getElementById('m4')){
+		jQuery.getScript('wlkt/js/myFocus.js');
+		
+	}
+</script>
+
+</body>
+</html>
+
