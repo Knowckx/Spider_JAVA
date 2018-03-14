@@ -19,7 +19,7 @@ import org.jsoup.select.Elements;
 
 public class WebUtil {
 
-    Map<String, String> cookieData = null;
+    Map<String, HashMap<String, String>> hostCookies = new HashMap<String, HashMap<String, String>>();
 
     //主流程0
     void mainLC() {
@@ -50,30 +50,12 @@ public class WebUtil {
             Map<String, String> headersOne = resp.headers();
             System.out.println("所有头文件值：" + headersOne);
             // cookies.get(key)
-            log("cookies", cookies);
+            log("cookies" + cookies);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-    }
-
-    //返回设置好Header的Connection
-    Connection GetConnection(String siteURL) {
-        String USER_AGENT = "User-Agent";
-        String USER_AGENT_VALUE = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36";
-
-        Connection conn = Jsoup.connect(siteURL);
-        conn.header(USER_AGENT, USER_AGENT_VALUE);
-        // con.header("Cookie", cook);
-        conn.timeout(100000);
-        return conn;
-
-    }
-
-    //用来打印
-    void log(String format, Object... args) {
-        System.out.printf(format, args);
     }
 
     //get 一个地址
@@ -82,84 +64,62 @@ public class WebUtil {
         HashMap<String, String> UserInfo = Excel.GetAllData();
     }
 
-    //----------------------Login - YZM处理
-    void UserLogin() {
-
-        GetConnectionLogin();
-        // GetPoint();
-
-    }
-
     //账号2 57205000536921	245727
     // Y9W5.。
 
     //Form Data 
-    //:
-    //:
-    // :
-    // :
-    // :Y9W5
 
-    //登陆成功
-    //Date:Tue, 13 Mar 2018 07:30:18 GMT
-    //新cookies
     //     Set-Cookie:timeout=30; Secure; HttpOnly
     // Set-Cookie:login-yhm-pwd=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT
-    Connection GetConnectionLogin() {
-        String strYZM = GetYZM();
-        String UserID = "57205000537025";
-        String PWD = "035127";
+    Connection UserLogin() {
+        String strYZM = FiestConnGetYZM();
+        String UserID = "57205000537021";
+        String PWD = "303724";
 
         String LoginUrl = "http://cx.zjlll.cn/zsjypt/Login.action?sign=jgwz&sqwzb_id=121";
         Connection conn = GetConnection(LoginUrl);
         conn.method(Method.POST);
-        conn.followRedirects(true);
         HashMap<String, String> QueryString = new HashMap<String, String>();
-        QueryString.put("SqwzModel.sqwz_id", "121");
-        QueryString.put("mkxsmc", "用户登录");
         QueryString.put("yhm", UserID);
         QueryString.put("mm", PWD);
-        QueryString.put("yzm", strYZM);
-
-        // QueryString.put("sign", "jgwz");
-        // QueryString.put("sqwzb_id", "121");
+        // QueryString.put("yzm", strYZM);
+        QueryString.put("yzm", "CF7H");
+        
         conn.data(QueryString);
+        conn.followRedirects(false);
+conn.ignoreContentType(true);
+        conn.header("Accept", "*/*");
+        conn.header("Accept-Language", "zh-CN,zh;q=0.9");
+        conn.header("Cache-Control", "no-cache");
+        conn.header("Connection", "keep-alive");
+        conn.header("Content-Length", "337");
+        conn.header("Content-Type", "multipart/form-data; boundary=----WebKitFormBoundaryDGZ6K3ANhie9KmZt");
+        
 
+        log(conn.request().headers().toString());
+
+        
         Response resp = ExcuteConn(conn);
-        cookieData = resp.cookies(); //cookies值
-        System.out.println("resp:" + resp.body());
+        // System.out.println("resp:" + resp.body());
 
         DownHTML(resp);
-        
 
         return conn;
     }
 
-    String GetYZM() {
+    String FiestConnGetYZM() {
         String CaptchaStr = "";
         try {
             String url = "http://cx.zjlll.cn/zsjypt/yzm.jsp";
             Connection conn = GetConnectionYZM(url);
-            Response resp = conn.execute();
+            Response resp = ExcuteConn(conn);
             File pic = DownLoadPic(resp.bodyStream(), "PicTest");
             CaptchaStr = GetTess4J(pic); //得到验证码
 
-            cookieData = resp.cookies(); //cookies值
-            System.out.println("cookie值:" + cookieData);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return CaptchaStr;
-    }
-
-    Connection GetConnectionYZM(String siteURL) {
-        Connection conn = Jsoup.connect(siteURL);
-        // conn.header("Accept", "image/webp,image/apng,image/*,*/*;q=0.8");
-        conn.header("Referer", "http://cx.zjlll.cn/zsjypt/");
-        conn.header("Host", "cx.zjlll.cn");
-        conn.ignoreContentType(true);
-        conn.method(Method.GET);
-        return conn;
     }
 
     File DownLoadPic(InputStream is, String fileName) {
@@ -205,8 +165,6 @@ public class WebUtil {
         int point;
         String url = "http://cx.zjlll.cn/zsjypt/index_Updateyh.action";
         Connection Conn = GetConnection(url);
-
-        Conn.header("Host", "cx.zjlll.cn");
         Conn.header("Origin", "http://cx.zjlll.cn");
         Conn.header("Referer", "http://cx.zjlll.cn/zsjypt/index_Updateyh.action");
 
@@ -231,22 +189,60 @@ public class WebUtil {
         return 0;
     }
 
-    //----------------------------------------------------------------Common
-    Response ExcuteConn(Connection Conn) {
-        Conn.cookies(cookieData);
-        Response resp = null;
+    //----------------------------------------------------------------通用组件
+    //返回设置好基础Header的Connection
+    Connection GetConnection(String siteURL) {
+        Connection conn = Jsoup.connect(siteURL);
+        String USER_AGENT = "User-Agent";
+        String USER_AGENT_VALUE = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36";
+        conn.header(USER_AGENT, USER_AGENT_VALUE);
+        conn.header("Host", "cx.zjlll.cn");
+        conn.header("Origin", "http://cx.zjlll.cn");
+        conn.timeout(100000);
+        return conn;
+    }
 
+    Response ExcuteConn(Connection Conn) {
+
+        String host = Conn.request().header("Host"); //连接前处理cookies
+        if (hostCookies.containsKey(host)) {
+            HashMap<String, String> cookies = hostCookies.get(host);
+            Conn.cookies(cookies);
+        }
+
+        Conn.cookie("JSESSIONID","81321E8F2B7AD1832AE31D8D851B6EC3"); //为了测试
+        
+
+        // Map<String, String> headers1 = Conn.request().headers(); //连接前所使用的headers
+        // log(headers1.toString());
+        Map<String, String> reqCookies = Conn.request().cookies(); //连接前所使用的headers
+        log("目前连接使用的Cookies " + reqCookies.toString());
+        Response resp = null;
         try {
             resp = Conn.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        cookieData = resp.cookies();
-        System.out.println("新cookies值:" + cookieData);
+        log("response:\n" + resp.headers().toString());
+
+        if (resp.statusCode() != 200 && resp.statusCode() != 302) {
+            log("conn failed,StatusCode:%s" + resp.statusCode());
+            log("exit!");
+            System.exit(0);
+        }
+        // log("本次请求的host "+host);
+        System.out.println("返回的cookies值:" + resp.cookies());
+
+        HashMap<String, String> cookies = hostCookies.get(host);
+        if (cookies == null) {
+            cookies = new HashMap<String, String>();
+            hostCookies.put(host, cookies);
+        }
+        cookies.putAll(resp.cookies());
         return resp;
     }
 
-    void DownHTML(Response resp){
+    void DownHTML(Response resp) {
         String HtmlContent = resp.body();
 
         String PicPath = "src/main/res/download/";
@@ -265,6 +261,19 @@ public class WebUtil {
             e.printStackTrace();
         }
     }
-    //----------------------------------------------------------------Common //
 
+    //用来打印
+    void log(String args) {
+        System.out.println(args);
+    }
+
+    //----------------------------------------------------------------Common //
+    //----------------------------------------------------------------制定    
+    Connection GetConnectionYZM(String siteURL) {
+        Connection conn = GetConnection(siteURL);
+        conn.header("Referer", "http://cx.zjlll.cn/zsjypt/");
+        conn.ignoreContentType(true);
+        conn.method(Method.GET);
+        return conn;
+    }
 }

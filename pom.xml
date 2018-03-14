@@ -36,11 +36,11 @@
         <artifactId>tess4j</artifactId>
         <version>3.4.4</version>
     </dependency>
-  <dependency>
+  <!-- <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-chrome-driver</artifactId>
       <version>3.11.0</version>
-  </dependency>
+  </dependency> -->
 
   </dependencies>
   <properties>
