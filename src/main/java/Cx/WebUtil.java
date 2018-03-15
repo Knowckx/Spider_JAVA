@@ -24,12 +24,22 @@ public class WebUtil {
     //主流程0
     void mainLC() {
         System.out.println("WebUtil Start");
-        UserLogin();
-        // test();
+        // UserLogin();
+        YouhasLogined();
         // ConnGet();
         // GetYZM();
         System.out.println("WebUtil end");
     }
+
+void YouhasLogined(){
+    String CookURL1 = "cx.zjlll.cn";
+    // String CookURL1 = "cx.zjlll.cn";
+    HashMap<String, String> cookies = new HashMap<String,String>();
+    cookies.put("_account_", "57205000537021");
+    cookies.put("JSESSIONID", "D89FBB7E8F147B1C0B03EE09545D9F67");
+    hostCookies.put(CookURL1, cookies)
+    
+}
 
     void ConnGettest() {
         // String CXSite = "http://www.baidu.com";
@@ -72,7 +82,7 @@ public class WebUtil {
     //     Set-Cookie:timeout=30; Secure; HttpOnly
     // Set-Cookie:login-yhm-pwd=""; Expires=Thu, 01-Jan-1970 00:00:10 GMT
     Connection UserLogin() {
-        String strYZM = FiestConnGetYZM();
+        // String strYZM = FiestConnGetYZM();
         String UserID = "57205000537021";
         String PWD = "303724";
 
@@ -84,21 +94,19 @@ public class WebUtil {
         QueryString.put("mm", PWD);
         // QueryString.put("yzm", strYZM);
         QueryString.put("yzm", "CF7H");
-        
+
         conn.data(QueryString);
         conn.followRedirects(false);
-conn.ignoreContentType(true);
+        conn.ignoreContentType(true);
         conn.header("Accept", "*/*");
         conn.header("Accept-Language", "zh-CN,zh;q=0.9");
         conn.header("Cache-Control", "no-cache");
         conn.header("Connection", "keep-alive");
         conn.header("Content-Length", "337");
         conn.header("Content-Type", "multipart/form-data; boundary=----WebKitFormBoundaryDGZ6K3ANhie9KmZt");
-        
 
         log(conn.request().headers().toString());
 
-        
         Response resp = ExcuteConn(conn);
         // System.out.println("resp:" + resp.body());
 
@@ -162,22 +170,13 @@ conn.ignoreContentType(true);
 
     //-----------------查询积分
     int GetPoint() {
-        int point;
         String url = "http://cx.zjlll.cn/zsjypt/index_Updateyh.action";
         Connection Conn = GetConnection(url);
-        Conn.header("Origin", "http://cx.zjlll.cn");
-        Conn.header("Referer", "http://cx.zjlll.cn/zsjypt/index_Updateyh.action");
-
         HashMap<String, String> QueryString = new HashMap<String, String>();
-
-        QueryString.put("xmkid", "2");
-
         QueryString.put("yhb_id", "438234");
-
         QueryString.put("js", "student");
         QueryString.put("xm", "高粉娣");
         QueryString.put("nc", "57205000536921");
-        QueryString.put("yhtx", "zcyhwd/yhtx/default/photo(722).jpg");
         QueryString.put("nc", "57205000536921");
         QueryString.put("sfzh", "330522196712245727");
         QueryString.put("tel", "13705828502");
@@ -210,8 +209,7 @@ conn.ignoreContentType(true);
             Conn.cookies(cookies);
         }
 
-        Conn.cookie("JSESSIONID","81321E8F2B7AD1832AE31D8D851B6EC3"); //为了测试
-        
+        Conn.cookie("JSESSIONID", "81321E8F2B7AD1832AE31D8D851B6EC3"); //为了测试
 
         // Map<String, String> headers1 = Conn.request().headers(); //连接前所使用的headers
         // log(headers1.toString());
