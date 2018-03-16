@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.apache.poi.ss.usermodel.*;
 
-public class ExcelUtil {
+ class ExcelUtil {
     String FilePath = "src/main/res/水口账号(1900).xls";
     Sheet sheet = null;
 
