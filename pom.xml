@@ -14,12 +14,7 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
-    <dependency>
-        <groupId>org.jsoup</groupId>
-        <artifactId>jsoup</artifactId>
-        <version>1.11.2</version>
-    </dependency>
+
     <!-- https://mvnrepository.com/artifact/org.molgenis/molgenis-data-excel -->
     <dependency>
         <groupId>org.apache.poi</groupId>
@@ -35,6 +30,17 @@
         <groupId>net.sourceforge.tess4j</groupId>
         <artifactId>tess4j</artifactId>
         <version>3.4.4</version>
+    </dependency>
+    <dependency>
+        <groupId>com.squareup.okhttp3</groupId>
+        <artifactId>okhttp</artifactId>
+        <version>3.10.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
+    <dependency>
+        <groupId>org.jsoup</groupId>
+        <artifactId>jsoup</artifactId>
+        <version>1.11.2</version>
     </dependency>
   <!-- <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
