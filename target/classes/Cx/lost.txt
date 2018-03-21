@@ -1,8 +1,4 @@
 okhttp用法
-OkHttpClient client = new OkHttpClient();
-Request.Builder requestBuilder  = new Request.Builder()
-      requestBuilder.url(url)
-
       requestBuilder.post(formBody)
     requestBuilder....
 
@@ -14,10 +10,6 @@ response.body().string();
 FormBody formBody = new FormBody.Builder()
                 .add("name", "dsd")
                 .build();
-
-
-public static final MediaType JSON
-    = MediaType.parse("application/json; charset=utf-8");
 
 OkHttpClient client = new OkHttpClient();
 

@@ -46,7 +46,7 @@ public class CrawlerStart {
                 String UserID = key;
                 String PWD = UserInfo.get(key);
                 // fixedThreadPool.execute(new CrawlerUtil(UserID,PWD));
-                fixedThreadPool.execute(new TakeTestUtil());
+                fixedThreadPool.execute(new TakeTestUtil(UserID,PWD));
             }
         } catch (Exception e) {
             e.printStackTrace();

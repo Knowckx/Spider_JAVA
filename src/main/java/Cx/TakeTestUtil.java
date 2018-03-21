@@ -1,20 +1,62 @@
 package Cx;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 import okhttp3.*;
 
 class TakeTestUtil implements Runnable {
-    OkHttpClient client = new OkHttpClient();
+    OkHttpClient client;
+    private HashMap<String, List<Cookie>> cookieStore = new HashMap<>();
 
     String UserID, PWD;
     int Cnt, MapSite;
     String ThreadID;
 
     // public CrawlerUtil(String UserID1, String PWD1, int mapCnt, int mapSize) {
-    public TakeTestUtil() {
+    public TakeTestUtil(String UserID1, String PWD1) {
+        this.UserID = UserID1;
+        this.PWD = PWD1;
+
+        init();
         // System.out.println(client.connectTimeoutMillis());
         // client.connectTimeoutMillis(5000);
+    }
+
+    void init() {
+        client = new OkHttpClient.Builder().followRedirects(true).cookieJar(new CookieJar() {
+            @Override
+            public void saveFromResponse(HttpUrl httpUrl, List<Cookie> newCookie) {
+                // System.out.println("目前 cookieStore:"+cookieStore.toString());              
+                // System.out.println("收到 Cookies: " + newCookie.toString());
+                String host  = httpUrl.host();
+                List<Cookie> hostCookie = cookieStore.get(host);
+                System.out.println("host 对应的 Cookies: " + hostCookie.toString());
+                hostCookie.addAll(newCookie);
+                // System.out.println("加完后，host 对应的 Cookies: " + hostCookie.toString());
+                
+                if (!hostCookie.isEmpty()){
+                    cookieStore.put(host, hostCookie);
+                }
+                // cookieStore.put(host, newCookie);
+                
+                System.out.println("结果的 Cookies: " + cookieStore.toString());
+            }
+
+            @Override
+            public List<Cookie> loadForRequest(HttpUrl httpUrl) {
+                List<Cookie> cookies = null;
+                List<Cookie> cookiesInStore = cookieStore.get(httpUrl.host());
+                cookies = cookiesInStore != null ? cookiesInStore : new ArrayList<Cookie>();
+                //   System.out.println("loadForRequest");
+                // System.out.println("url host: " + httpUrl.host()); 
+                // System.out.println("Req cookies: " + cookies.toString()); 
+                return cookies;
+            }
+        }).build();
     }
 
     public void run() {
@@ -34,28 +76,7 @@ class TakeTestUtil implements Runnable {
 
         //     hostCookies.clear();
         String yhb_id = UserLogin();
-
-        //     int score = GetUserScore(yhb_id);
-        //     if (score < 50) {
-        //         System.err.printf("error!!! UserID,PWD = %s,%s,Score is %s\n", UserID, PWD, score);
-        //     }
-        //     // if (score > 50 || score == -1) {
-        //     //     log("user score is " + score);
-        //     //     log("continue...");
-        //     //     return;
-        //     // }
-        //     // WatchVideos();
-
-        //     // score = GetUserScore(yhb_id);
-        //     // log("after work,score is " + score);
-        //     // if (score < 51) {
-        //     //     System.err.printf("error!!! UserID,PWD = %s,%s \n", UserID, PWD);
-        //     // }
-
     }
-
-    // 
-
     //     try {
     //         Doc = resp.parse();
     //     } catch (Exception e) {
@@ -65,13 +86,6 @@ class TakeTestUtil implements Runnable {
     //     // log(text.attr("value"));
     //     return text.attr("value");
 
-    // int GetUserScore(String yhb_id) {
-    //     // log("Load video " + zyb_id);
-    //     String VideoOKUrl = "http://ln.zjlll.cn/zsjypt/space_personalSpace.action?yhlybmc=XSJBXXB&yhlybid=" + yhb_id;
-    //     Connection conn = GetConnection(VideoOKUrl);
-    //     conn.method(Method.GET);
-    //     Response resp = ExcuteConn(conn);
-    //     DownHTML(resp);
     //     Document Doc = null;
     //     try {
     //         Doc = resp.parse();
@@ -90,11 +104,26 @@ class TakeTestUtil implements Runnable {
     // }
 
     String UserLogin() {
+
         String YZMUrl = "http://cx.zjlll.cn/zsjypt/yzm.jsp";
         Request.Builder builder = getReqBuilder(YZMUrl);
         Response resp = ExcuteConn(builder);
         String YZMPic = DownYZM(resp);
-        System.out.println(YZMPic);
+        // System.out.println(YZMPic);
+
+        // System.out.println(cookieStore.toString()); //2
+
+        String LoginURL = "http://cx.zjlll.cn/zsjypt/Login.action?sign=jgwz&sqwzb_id=121";
+        builder = getReqBuilder(LoginURL);
+        //post参数
+        RequestBody formBody = new FormBody.Builder().add("yhm", UserID).add("mm", PWD).add("yzm", YZMPic).build();
+        builder.post(formBody);
+        resp = ExcuteConn(builder);
+
+        // System.out.println(cookieStore.toString()); //3
+
+        System.out.println(resp.headers().toString());
+        // DownHTML(resp);
         return "";
     }
 
@@ -118,13 +147,15 @@ class TakeTestUtil implements Runnable {
     Response ExcuteConn(Request.Builder requestBuilder) {
         Response resp = null;
         int tryCnt = 0; //重试
+        Request Req = requestBuilder.build();
         while (true) {
             try {
-                resp = client.newCall(requestBuilder.build()).execute();
+                resp = client.newCall(Req).execute();
                 break;
             } catch (Exception e) {
+                String err = String.format("Err.when req to %s,retry time %d", Req.url(), tryCnt);
+                System.out.println(err);
                 if (tryCnt > 5) {
-                    System.out.println("Error!retry time is " + tryCnt);
                     e.printStackTrace();
                     RetryTimeOut();
                 }
@@ -141,15 +172,24 @@ class TakeTestUtil implements Runnable {
     String DownYZM(Response resp) {
         FileUtil fu = new FileUtil();
         String PicPath = "src/main/res/download/yzm.jpg";
-        File file =  fu.DownLoad(PicPath, resp.body().byteStream());
+        File file = fu.DownLoad(PicPath, resp.body().byteStream());
         String dataPath = "src/main/res/download/tessdata";
-        String Res =  fu.tess4JOCR(file, dataPath);
+        String Res = fu.tess4JOCR(file, dataPath);
         return Res;
     }
+
     File DownHTML(Response resp) {
         FileUtil fu = new FileUtil();
-        String PicPath = "src/main/res/download/yzm.jpg";
-        return fu.DownLoad(PicPath, resp.body().byteStream());
+        try {
+            System.out.println(resp.body().string());
+
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+
+        String pagePath = "src/main/res/download/Resp.HTML";
+
+        return fu.DownLoad(pagePath, resp.body().byteStream());
     }
 
     //req
