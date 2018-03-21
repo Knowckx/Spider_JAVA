@@ -28,12 +28,13 @@ class FileUtil {
     String tess4JOCR(File picfile,String dataPath) {
         Tesseract instance = new Tesseract();
         instance.setDatapath(dataPath);
-        String result = "";
+        String result = null;
         try {
             result = instance.doOCR(picfile);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.printf("tess4JOCR result,%s\n", result);
         return result;
     }
 }

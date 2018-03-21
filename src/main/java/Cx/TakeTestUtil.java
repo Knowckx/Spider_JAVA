@@ -10,7 +10,6 @@ import okhttp3.*;
 
 class TakeTestUtil implements Runnable {
     OkHttpClient client;
-    private HashMap<String, List<Cookie>> cookieStore = new HashMap<>();
 
     String UserID, PWD;
     int Cnt, MapSite;
@@ -27,36 +26,8 @@ class TakeTestUtil implements Runnable {
     }
 
     void init() {
-        client = new OkHttpClient.Builder().followRedirects(true).cookieJar(new CookieJar() {
-            @Override
-            public void saveFromResponse(HttpUrl httpUrl, List<Cookie> newCookie) {
-                // System.out.println("目前 cookieStore:"+cookieStore.toString());              
-                // System.out.println("收到 Cookies: " + newCookie.toString());
-                String host  = httpUrl.host();
-                List<Cookie> hostCookie = cookieStore.get(host);
-                System.out.println("host 对应的 Cookies: " + hostCookie.toString());
-                hostCookie.addAll(newCookie);
-                // System.out.println("加完后，host 对应的 Cookies: " + hostCookie.toString());
-                
-                if (!hostCookie.isEmpty()){
-                    cookieStore.put(host, hostCookie);
-                }
-                // cookieStore.put(host, newCookie);
-                
-                System.out.println("结果的 Cookies: " + cookieStore.toString());
-            }
-
-            @Override
-            public List<Cookie> loadForRequest(HttpUrl httpUrl) {
-                List<Cookie> cookies = null;
-                List<Cookie> cookiesInStore = cookieStore.get(httpUrl.host());
-                cookies = cookiesInStore != null ? cookiesInStore : new ArrayList<Cookie>();
-                //   System.out.println("loadForRequest");
-                // System.out.println("url host: " + httpUrl.host()); 
-                // System.out.println("Req cookies: " + cookies.toString()); 
-                return cookies;
-            }
-        }).build();
+        CookieJar cj = new cookieUtil();
+        client = new OkHttpClient.Builder().cookieJar(cj).followRedirects(true).build();
     }
 
     public void run() {
@@ -104,7 +75,10 @@ class TakeTestUtil implements Runnable {
     // }
 
     String UserLogin() {
-
+        String FirstUrl = "http://cx.zjlll.cn/zsjypt/";
+        Request.Builder builder1 = getReqBuilder(FirstUrl);
+        ExcuteConn(builder1);
+        
         String YZMUrl = "http://cx.zjlll.cn/zsjypt/yzm.jsp";
         Request.Builder builder = getReqBuilder(YZMUrl);
         Response resp = ExcuteConn(builder);
