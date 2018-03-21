@@ -1,0 +1,32 @@
+okhttp用法
+OkHttpClient client = new OkHttpClient();
+Request.Builder requestBuilder  = new Request.Builder()
+      requestBuilder.url(url)
+
+      requestBuilder.post(formBody)
+    requestBuilder....
+
+//req
+Response response = client.newCall(requestBuilder.build()).execute();
+response.body().string();
+
+//post参数
+FormBody formBody = new FormBody.Builder()
+                .add("name", "dsd")
+                .build();
+
+
+public static final MediaType JSON
+    = MediaType.parse("application/json; charset=utf-8");
+
+OkHttpClient client = new OkHttpClient();
+
+String post(String url, String json) throws IOException {
+  RequestBody body = RequestBody.create(JSON, json);
+  Request request = new Request.Builder()
+      .url(url)
+      .post(body)
+      .build();
+  Response response = client.newCall(request).execute();
+  return response.body().string();
+}

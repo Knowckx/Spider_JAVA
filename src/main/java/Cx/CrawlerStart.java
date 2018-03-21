@@ -34,8 +34,8 @@ public class CrawlerStart {
     void mainMakeTest() {
         ExcelUtil ExcelFile = new ExcelUtil();
         HashMap<String, String> UserInfo = ExcelFile.GetAllData();
-        // UserInfo.clear();
-        // UserInfo.put("57205000509167", "01131X");
+        UserInfo.clear();
+        UserInfo.put("57205000509167", "01131X");
         try {
             int mspSize = UserInfo.size();
             int Cnt = 1;
@@ -46,7 +46,7 @@ public class CrawlerStart {
                 String UserID = key;
                 String PWD = UserInfo.get(key);
                 // fixedThreadPool.execute(new CrawlerUtil(UserID,PWD));
-                fixedThreadPool.execute(new CrawlerUtil(UserID,PWD,Cnt++,mspSize));
+                fixedThreadPool.execute(new TakeTestUtil());
             }
         } catch (Exception e) {
             e.printStackTrace();
