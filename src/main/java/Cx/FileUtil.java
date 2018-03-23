@@ -9,7 +9,7 @@ import java.nio.channels.ReadableByteChannel;
 import net.sourceforge.tess4j.Tesseract;
 
 class FileUtil {
-    File DownLoad(String FilePath, InputStream in) {
+    File DownLoadFile(String FilePath, InputStream in) {
         File file = null;
         try {
             file = new File(FilePath); //路径+文件名
@@ -25,7 +25,26 @@ class FileUtil {
         return file;
     }
 
-    String tess4JOCR(File picfile,String dataPath) {
+    File DownLoadHtml(String filePath, InputStream in) {
+        File file = null;
+        try {
+            file = new File(filePath); //路径+文件名
+            FileOutputStream fos = new FileOutputStream(file);
+            int readSign = 0;
+            while ((readSign = in.read()) != -1) {
+                fos.write(readSign);
+            }
+            in.close();
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+        }
+        System.out.printf("文件下载成功,%s\n", filePath);
+        return file;
+    }
+
+    String tess4JOCR(File picfile, String dataPath) {
         Tesseract instance = new Tesseract();
         instance.setDatapath(dataPath);
         String result = null;

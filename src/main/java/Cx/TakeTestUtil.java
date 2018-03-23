@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-import org.apache.poi.hssf.record.PageBreakRecord.Break;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -44,23 +43,49 @@ class TakeTestUtil implements Runnable {
         //     // System.out.printf("UserID,PWD = %s,%s \n", UserID, PWD);
         try {
             MainDo();
+            MainTest();
         } catch (Exception e) {
             e.printStackTrace();
         }
         //     System.out.printf("-------------Progress: %s/%s \n", Cnt++, MapSite);
     }
 
-    void MainDo() {
-        System.out.println("TakeTest");
-        UserID = "57205000537021";
-        PWD = "303724";
-        //1.获得验证码，识别，登陆。确定你已经登陆成功。
-
-        //     hostCookies.clear();
-        String yhb_id = UserLogin();
-        // signUptheTest();
-        // getScore();
+    void MainTest() {
+        System.out.println("MainTest--------");
+        try {
+            String okClick = "jxdoKs(1641,24121);";
+            int sign1 = okClick.indexOf(",");
+            int sign2 = okClick.indexOf(")");
+            
+            log("sign1,%s", sign1);
+            log("sign2,%s", sign2);
+            String yhksb_id = okClick.substring(sign1-1, sign2);
+            log("yhksb_id,%s", yhksb_id);
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
+        System.exit(1);
     }
+
+    void MainDo() {
+        // UserID = "57205000537021";  //有分了。
+        // PWD = "303724";
+        // UserID = "57205000537033";   //处女 
+        // PWD = "142926";
+        UserID = "57205000537025";   //青女 
+        PWD = "035127";
+
+        String yhb_id = UserLogin();
+        log("yhb_id %s",yhb_id);
+        signUptheTest();
+        int score = getScore();
+        if (score > -1) {
+            log("User:%s Score is %s,go next..", UserID, score);
+            return;
+        }
+        System.out.println("score:" + score);
+        FuckTheTest();
+}
 
     String UserLogin() {
         String yhb_id = "";
@@ -70,7 +95,6 @@ class TakeTestUtil implements Runnable {
             yhb_id = resp.request().url().queryParameter("yhb_id");
         }
         System.out.println("Login Success!");
-        DownHTML(resp);
         return yhb_id;
     }
 
@@ -97,28 +121,55 @@ class TakeTestUtil implements Runnable {
         Response resp = ExcuteConn(builder);
     }
 
+
     int getScore() {
+        Document Doc = getScorePageDoc();
+        Elements eleScore = Doc.select("#ktMain > table > tbody > tr > td:nth-child(6)");
+        int score = -1;
+        try {
+            String scoreText = eleScore.text();
+            if (!scoreText.isEmpty()) {
+                score = Integer.parseInt(scoreText.substring(0, 2));
+            }
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return score;
+    }
+    Document getScorePageDoc() {
         String getScoreUrl = "http://cx.zjlll.cn/zsjypt/kcFrame.action?kcdm=1001402&yhb_id=&kclmb_id=8&kclmszb_id=10617";
         Request.Builder builder = getReqBuilder(getScoreUrl);
         Response resp = ExcuteConn(builder);
         Document Doc = null;
         try {
             Doc = Jsoup.parse(resp.body().string());
+            resp.body().close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Elements text = Doc.select("#ktMain > table > tbody > tr > td:nth-child(6)");
-        int score = -1;
-        System.out.println("score:" + text.text());
-        // try {
-        //     score = Integer.parseInt(text.text());
-        // } catch (NumberFormatException e) {
-        //     e.printStackTrace();
-        //     DownHTML(resp);
-        // }
-        return score;
-        // 
+        return Doc;
     }
+
+    void FuckTheTest(){
+        Document Doc = getScorePageDoc();
+        String okClickSelect = "#ktMain > table > tbody > tr > td:nth-child(7) > a";
+        String okClick = Doc.select(okClickSelect).attr("onclick");
+        
+        log("format,%s", okClick);
+
+
+
+
+
+        // 第一次答卷的：doKj(1641)
+        // 已答卷的：jxdoKs(1641,24121);
+
+
+    }
+        
+
+
+
 
     // //----------------------------------------------------------------通用组件
     // //返回设置好基础Header的Connection
@@ -129,11 +180,11 @@ class TakeTestUtil implements Runnable {
 
         String USER_AGENT_VALUE = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.101 Safari/537.36";
         requestBuilder.addHeader("User-Agent", USER_AGENT_VALUE);
-        requestBuilder.addHeader("Accept-Encoding", "gzip, deflate");
         requestBuilder.addHeader("Accept-Language", "zh-CN,zh;q=0.9");
-        requestBuilder.addHeader("Cache-Control", "no-cache");
         requestBuilder.addHeader("Connection", "keep-alive");
         requestBuilder.addHeader("Host", "cx.zjlll.cn");
+        // requestBuilder.addHeader("Accept",
+        // "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8");
         return requestBuilder;
     }
 
@@ -165,7 +216,7 @@ class TakeTestUtil implements Runnable {
     String DownYZM(Response resp) {
         FileUtil fu = new FileUtil();
         String PicPath = "src/main/res/download/yzm.jpg";
-        File file = fu.DownLoad(PicPath, resp.body().byteStream());
+        File file = fu.DownLoadFile(PicPath, resp.body().byteStream());
         String dataPath = "src/main/res/download/tessdata";
         String Res = fu.tess4JOCR(file, dataPath);
         return Res;
@@ -179,9 +230,9 @@ class TakeTestUtil implements Runnable {
             //TODO: handle exception
         }
 
-        String pagePath = "src/main/res/download/Resp.HTML";
-
-        return fu.DownLoad(pagePath, resp.body().byteStream());
+        String pagePath = "src/main/res/download/Resp.html";
+        // return null;
+        return fu.DownLoadHtml(pagePath, resp.body().byteStream());
     }
 
     void UtilSleep(int timeSleep) {
@@ -196,6 +247,9 @@ class TakeTestUtil implements Runnable {
         // System.out.printf("RetryTimeOut!\nUserID,PWD = %s,%s \n", UserID, PWD);
     }
 
+    void log(String format, Object... args){
+        System.out.println(String.format(format, args));
+    }
     //----------------------------------------------------------------Common //
     //----------------------------------------------------------------制定    
 }
