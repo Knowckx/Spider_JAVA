@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import org.apache.poi.hssf.record.PageBreakRecord.Break;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import Cx.cookie.CookieJarImpl;
 import Cx.cookie.store.MemoryCookieStore;
@@ -49,22 +52,29 @@ class TakeTestUtil implements Runnable {
 
     void MainDo() {
         System.out.println("TakeTest");
+        UserID = "57205000537021";
+        PWD = "303724";
         //1.获得验证码，识别，登陆。确定你已经登陆成功。
 
         //     hostCookies.clear();
         String yhb_id = UserLogin();
+        // signUptheTest();
+        // getScore();
     }
 
     String UserLogin() {
         String yhb_id = "";
+        Response resp = null;
         while (yhb_id.equals("")) {
-            yhb_id = DoUserLogin();
+            resp = DoUserLogin();
+            yhb_id = resp.request().url().queryParameter("yhb_id");
         }
-        System.out.println("Success");
-        return "";
+        System.out.println("Login Success!");
+        DownHTML(resp);
+        return yhb_id;
     }
 
-    String DoUserLogin() {
+    Response DoUserLogin() {
         String YZMUrl = "http://cx.zjlll.cn/zsjypt/yzm.jsp";
         Request.Builder builder = getReqBuilder(YZMUrl);
         Response resp = ExcuteConn(builder);
@@ -75,9 +85,39 @@ class TakeTestUtil implements Runnable {
         RequestBody formBody = new FormBody.Builder().add("yzm", YZMPic).add("yhm", UserID).add("mm", PWD).build();
         builder.post(formBody);
         resp = ExcuteConn(builder);
-        // System.out.println(resp.headers().toString());
-        String yhb_id = resp.request().url().queryParameter("yhb_id");
-        return yhb_id;
+        return resp;
+    }
+
+    void signUptheTest() {
+        String testID = "1453";
+        String testUrl = "http://cx.zjlll.cn/zsjypt/indexSqcj.action";
+        Request.Builder builder = getReqBuilder(testUrl);
+        RequestBody formBody = new FormBody.Builder().add("xmId", testID).build();
+        builder.post(formBody);
+        Response resp = ExcuteConn(builder);
+    }
+
+    int getScore() {
+        String getScoreUrl = "http://cx.zjlll.cn/zsjypt/kcFrame.action?kcdm=1001402&yhb_id=&kclmb_id=8&kclmszb_id=10617";
+        Request.Builder builder = getReqBuilder(getScoreUrl);
+        Response resp = ExcuteConn(builder);
+        Document Doc = null;
+        try {
+            Doc = Jsoup.parse(resp.body().string());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Elements text = Doc.select("#ktMain > table > tbody > tr > td:nth-child(6)");
+        int score = -1;
+        System.out.println("score:" + text.text());
+        // try {
+        //     score = Integer.parseInt(text.text());
+        // } catch (NumberFormatException e) {
+        //     e.printStackTrace();
+        //     DownHTML(resp);
+        // }
+        return score;
+        // 
     }
 
     // //----------------------------------------------------------------通用组件
@@ -95,7 +135,6 @@ class TakeTestUtil implements Runnable {
         requestBuilder.addHeader("Connection", "keep-alive");
         requestBuilder.addHeader("Host", "cx.zjlll.cn");
         return requestBuilder;
-        // application/x-www-form-urlencoded
     }
 
     Response ExcuteConn(Request.Builder requestBuilder) {
