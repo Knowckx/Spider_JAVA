@@ -5,7 +5,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
+import org.apache.poi.hssf.record.PageBreakRecord.Break;
+
+import Cx.cookie.CookieJarImpl;
+import Cx.cookie.store.MemoryCookieStore;
 import okhttp3.*;
 
 class TakeTestUtil implements Runnable {
@@ -26,7 +31,8 @@ class TakeTestUtil implements Runnable {
     }
 
     void init() {
-        CookieJar cj = new cookieUtil();
+        MemoryCookieStore mcs = new MemoryCookieStore();
+        CookieJar cj = new CookieJarImpl(mcs);
         client = new OkHttpClient.Builder().cookieJar(cj).followRedirects(true).build();
     }
 
@@ -48,57 +54,30 @@ class TakeTestUtil implements Runnable {
         //     hostCookies.clear();
         String yhb_id = UserLogin();
     }
-    //     try {
-    //         Doc = resp.parse();
-    //     } catch (Exception e) {
-    //     }
-
-    //     Elements text = Doc.select("#yhb_id");
-    //     // log(text.attr("value"));
-    //     return text.attr("value");
-
-    //     Document Doc = null;
-    //     try {
-    //         Doc = resp.parse();
-    //     } catch (Exception e) {
-    //     }
-    //     Elements text = Doc.select(
-    //             "body > div:nth-child(6) > div > div:nth-child(1) > div > div > dl > dd:nth-child(3) > span:nth-child(1) > a");
-    //     int score = -1;
-    //     try {
-    //         score = Integer.parseInt(text.text());
-    //     } catch (NumberFormatException e) {
-    //         e.printStackTrace();
-    //         DownHTML(resp);
-    //     }
-    //     return score;
-    // }
 
     String UserLogin() {
-        String FirstUrl = "http://cx.zjlll.cn/zsjypt/";
-        Request.Builder builder1 = getReqBuilder(FirstUrl);
-        ExcuteConn(builder1);
-        
+        String yhb_id = "";
+        while (yhb_id.equals("")) {
+            yhb_id = DoUserLogin();
+        }
+        System.out.println("Success");
+        return "";
+    }
+
+    String DoUserLogin() {
         String YZMUrl = "http://cx.zjlll.cn/zsjypt/yzm.jsp";
         Request.Builder builder = getReqBuilder(YZMUrl);
         Response resp = ExcuteConn(builder);
-        String YZMPic = DownYZM(resp);
-        // System.out.println(YZMPic);
-
-        // System.out.println(cookieStore.toString()); //2
-
+        String YZMPic = DownYZM(resp).substring(0, 4);
+        System.out.println("YZM " + YZMPic);
         String LoginURL = "http://cx.zjlll.cn/zsjypt/Login.action?sign=jgwz&sqwzb_id=121";
         builder = getReqBuilder(LoginURL);
-        //post参数
-        RequestBody formBody = new FormBody.Builder().add("yhm", UserID).add("mm", PWD).add("yzm", YZMPic).build();
+        RequestBody formBody = new FormBody.Builder().add("yzm", YZMPic).add("yhm", UserID).add("mm", PWD).build();
         builder.post(formBody);
         resp = ExcuteConn(builder);
-
-        // System.out.println(cookieStore.toString()); //3
-
-        System.out.println(resp.headers().toString());
-        // DownHTML(resp);
-        return "";
+        // System.out.println(resp.headers().toString());
+        String yhb_id = resp.request().url().queryParameter("yhb_id");
+        return yhb_id;
     }
 
     // //----------------------------------------------------------------通用组件
@@ -116,6 +95,7 @@ class TakeTestUtil implements Runnable {
         requestBuilder.addHeader("Connection", "keep-alive");
         requestBuilder.addHeader("Host", "cx.zjlll.cn");
         return requestBuilder;
+        // application/x-www-form-urlencoded
     }
 
     Response ExcuteConn(Request.Builder requestBuilder) {
@@ -137,9 +117,9 @@ class TakeTestUtil implements Runnable {
                 UtilSleep(3 * tryCnt);
             }
         }
-        if (!resp.isSuccessful()) {
-            System.err.println("conn failed,StatusCode:%s" + resp.code());
-        }
+        // if (!resp.isSuccessful()) {
+        //     System.err.println("conn failed,StatusCode:%s" + resp.code());
+        // }
         return resp;
     }
 
@@ -155,8 +135,7 @@ class TakeTestUtil implements Runnable {
     File DownHTML(Response resp) {
         FileUtil fu = new FileUtil();
         try {
-            System.out.println(resp.body().string());
-
+            // System.out.println(resp.body().string());
         } catch (Exception e) {
             //TODO: handle exception
         }
@@ -165,20 +144,6 @@ class TakeTestUtil implements Runnable {
 
         return fu.DownLoad(pagePath, resp.body().byteStream());
     }
-
-    //req
-    // requestBuilder.post(formBody)
-    // Response response = client.newCall(requestBuilder.build()).execute();
-    // response.body().string();
-
-    //post参数
-    //     FormBody formBody = new FormBody.Builder()
-    //                     .add("name", "dsd")
-    //                     .build();
-
-    //     conn.timeout(100000);
-    //     return conn;
-    // }
 
     void UtilSleep(int timeSleep) {
         try {

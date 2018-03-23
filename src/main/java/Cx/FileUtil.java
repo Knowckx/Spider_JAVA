@@ -34,7 +34,6 @@ class FileUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.printf("tess4JOCR result,%s\n", result);
         return result;
     }
 }
