@@ -21,7 +21,6 @@ class FileUtil {
             e.printStackTrace();
         } finally {
         }
-        System.out.printf("文件下载成功,%s\n", FilePath);
         return file;
     }
 
@@ -40,19 +39,20 @@ class FileUtil {
             e.printStackTrace();
         } finally {
         }
-        System.out.printf("文件下载成功,%s\n", filePath);
         return file;
     }
 
-    String tess4JOCR(File picfile, String dataPath) {
+    String tess4JOCR(File picfile) {
+        String dataPath = "src/main/res/download/tessdata";
         Tesseract instance = new Tesseract();
         instance.setDatapath(dataPath);
         String result = null;
         try {
             result = instance.doOCR(picfile);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("tess4JOCR Fucj");
         }
         return result;
     }
+
 }
